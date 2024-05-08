@@ -21,10 +21,7 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog(); // Set up Serilog as the logging provider
 
-//builder.Services.AddMvc(options =>
-//{
-//    options.Filters.Add<ApiExceptionInterceptor>();
-//});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -104,3 +101,7 @@ app.Run();
 
 //app.Run();
 
+//builder.Services.AddMvc(options =>
+//{
+//    options.Filters.Add<ApiExceptionInterceptor>();
+//});

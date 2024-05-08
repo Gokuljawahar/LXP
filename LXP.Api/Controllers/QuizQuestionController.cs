@@ -1,4 +1,52 @@
-﻿////////using Microsoft.AspNetCore.Http;
+﻿
+using LXP.Common.DTO;
+using LXP.Core.IServices;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+
+namespace LXP.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class QuizQuestionsController : ControllerBase
+    {
+        private readonly IQuizQuestionService _quizQuestionService;
+
+        public QuizQuestionsController(IQuizQuestionService quizQuestionService)
+        {
+            _quizQuestionService = quizQuestionService;
+        }
+
+        [HttpPost("AddQuestion")]
+        public IActionResult AddQuestion([FromBody] QuizQuestionDto quizQuestionDto)
+        {
+            var result = _quizQuestionService.AddQuestion(quizQuestionDto, quizQuestionDto.Options);
+            return Ok(result);
+        }        
+        [HttpPut("UpdateQuestion")]
+        public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto)
+        {
+            var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, quizQuestionDto.Options);
+            return Ok(result);
+        }
+
+        [HttpDelete("DeleteQuestion")]
+        public IActionResult DeleteQuestion(Guid quizQuestionId)
+        {
+            var result = _quizQuestionService.DeleteQuestion(quizQuestionId);
+            return Ok(result);
+        }
+
+        [HttpGet("GetAllQuestions")]
+        public IActionResult GetAllQuestions()
+        {
+            var result = _quizQuestionService.GetAllQuestions();
+            return Ok(result);
+        }
+    }
+}
+////////using Microsoft.AspNetCore.Http;
 ////////using Microsoft.AspNetCore.Mvc;
 
 ////////namespace LXP.Api.Controllers
@@ -307,59 +355,9 @@
 //    var result = _quizQuestionService.AddQuestion(quizQuestionDto, options);
 //    return Ok(result);
 //}
-
-using LXP.Common.DTO;
-using LXP.Core.IServices;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-
-namespace LXP.Api.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class QuizQuestionsController : ControllerBase
-    {
-        private readonly IQuizQuestionService _quizQuestionService;
-
-        public QuizQuestionsController(IQuizQuestionService quizQuestionService)
-        {
-            _quizQuestionService = quizQuestionService;
-        }
-
-        [HttpPost("AddQuestion")]
-        public IActionResult AddQuestion([FromBody] QuizQuestionDto quizQuestionDto)
-        {
-            var result = _quizQuestionService.AddQuestion(quizQuestionDto, quizQuestionDto.Options);
-            return Ok(result);
-        }
-
-
-        //[HttpPut("UpdateQuestion")]
-        //public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
-        //{
-        //    var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
-        //    return Ok(result);
-        //}
-        [HttpPut("UpdateQuestion")]
-        public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto)
-        {
-            var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, quizQuestionDto.Options);
-            return Ok(result);
-        }
-
-        [HttpDelete("DeleteQuestion")]
-        public IActionResult DeleteQuestion(Guid quizQuestionId)
-        {
-            var result = _quizQuestionService.DeleteQuestion(quizQuestionId);
-            return Ok(result);
-        }
-
-        [HttpGet("GetAllQuestions")]
-        public IActionResult GetAllQuestions()
-        {
-            var result = _quizQuestionService.GetAllQuestions();
-            return Ok(result);
-        }
-    }
-}
+//[HttpPut("UpdateQuestion")]
+//public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
+//{
+//    var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
+//    return Ok(result);
+//}

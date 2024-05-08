@@ -1,4 +1,24 @@
-﻿////using System;
+﻿
+using LXP.Common.DTO;
+using System;
+using System.Collections.Generic;
+
+namespace LXP.Data.IRepository
+{
+    public interface IQuizQuestionRepository
+    {
+        Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+        bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+        bool DeleteQuestion(Guid quizQuestionId);
+        List<QuizQuestionDto> GetAllQuestions();
+        void DecrementQuestionNos(Guid deletedQuestionId);
+        int GetNextQuestionNo(Guid quizId);
+        Guid AddQuestionOption(QuestionOptionDto questionOptionDto, Guid quizQuestionId);
+        List<QuestionOptionDto> GetQuestionOptionsById(Guid quizQuestionId);
+        bool ValidateOptionsByQuestionType(string questionType, List<QuestionOptionDto> options);
+    }
+}
+////using System;
 ////using System.Collections.Generic;
 ////using System.Linq;
 ////using System.Text;
@@ -63,22 +83,3 @@
 //         bool ValidateOptionsByQuestionType(string questionType, List<QuestionOptionDto> options);
 //     }
 // }
-using LXP.Common.DTO;
-using System;
-using System.Collections.Generic;
-
-namespace LXP.Data.IRepository
-{
-    public interface IQuizQuestionRepository
-    {
-        Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
-        bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
-        bool DeleteQuestion(Guid quizQuestionId);
-        List<QuizQuestionDto> GetAllQuestions();
-        void DecrementQuestionNos(Guid deletedQuestionId);
-        int GetNextQuestionNo(Guid quizId);
-        Guid AddQuestionOption(QuestionOptionDto questionOptionDto, Guid quizQuestionId);
-        List<QuestionOptionDto> GetQuestionOptionsById(Guid quizQuestionId);
-        bool ValidateOptionsByQuestionType(string questionType, List<QuestionOptionDto> options);
-    }
-}

@@ -1,4 +1,45 @@
-﻿//////////using System;
+﻿
+using LXP.Common.DTO;
+using LXP.Core.IServices;
+using LXP.Data.IRepository;
+using System;
+using System.Collections.Generic;
+
+namespace LXP.Core.Services
+{
+    public class QuizQuestionService : IQuizQuestionService
+    {
+        private readonly IQuizQuestionRepository _quizQuestionRepository;
+
+        public QuizQuestionService(IQuizQuestionRepository quizQuestionRepository)
+        {
+            _quizQuestionRepository = quizQuestionRepository;
+        }
+
+        public Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
+        {
+            return _quizQuestionRepository.AddQuestion(quizQuestionDto, options);
+        }
+
+        public bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
+        {
+            return _quizQuestionRepository.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
+        }
+
+
+        public bool DeleteQuestion(Guid quizQuestionId)
+        {
+            return _quizQuestionRepository.DeleteQuestion(quizQuestionId);
+        }
+
+        public List<QuizQuestionDto> GetAllQuestions()
+        {
+            return _quizQuestionRepository.GetAllQuestions();
+        }
+    }
+}
+
+//////////using System;
 //////////using System.Collections.Generic;
 //////////using System.Linq;
 //////////using System.Text;
@@ -339,42 +380,3 @@
 //        }
 //    }
 //}
-using LXP.Common.DTO;
-using LXP.Core.IServices;
-using LXP.Data.IRepository;
-using System;
-using System.Collections.Generic;
-
-namespace LXP.Core.Services
-{
-    public class QuizQuestionService : IQuizQuestionService
-    {
-        private readonly IQuizQuestionRepository _quizQuestionRepository;
-
-        public QuizQuestionService(IQuizQuestionRepository quizQuestionRepository)
-        {
-            _quizQuestionRepository = quizQuestionRepository;
-        }
-
-        public Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
-        {
-            return _quizQuestionRepository.AddQuestion(quizQuestionDto, options);
-        }
-
-        public bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
-        {
-            return _quizQuestionRepository.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
-        }
-
-
-        public bool DeleteQuestion(Guid quizQuestionId)
-        {
-            return _quizQuestionRepository.DeleteQuestion(quizQuestionId);
-        }
-
-        public List<QuizQuestionDto> GetAllQuestions()
-        {
-            return _quizQuestionRepository.GetAllQuestions();
-        }
-    }
-}
