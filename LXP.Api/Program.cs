@@ -1,16 +1,15 @@
 
 using LXP.Api.Interceptors;
-
 using LXP.Data.Repository;
 using LXP.Data.IRepository;
-
 using LXP.Core.Services;
 using LXP.Core.IServices;
-
+using OfficeOpenXml;
 using Serilog;
 using LXP.Data.DBContexts;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using LXP.Core.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +19,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Host.UseSerilog(); // Set up Serilog as the logging provider
+ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 //builder.Services.AddMvc(options =>
 //{
@@ -36,6 +36,8 @@ builder.Services.AddScoped<IQuizService, QuizService>();
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQuizQuestionService, QuizQuestionService>();
 builder.Services.AddScoped<IQuizQuestionRepository, QuizQuestionRepository>();
+builder.Services.AddScoped<IBulkQuestionRepository, BulkQuestionRepository>();
+builder.Services.AddScoped<IBulkQuestionService, BulkQuestionService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
