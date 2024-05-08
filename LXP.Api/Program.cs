@@ -11,6 +11,7 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using LXP.Core.Repositories;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -38,6 +39,7 @@ builder.Services.AddScoped<IQuizQuestionService, QuizQuestionService>();
 builder.Services.AddScoped<IQuizQuestionRepository, QuizQuestionRepository>();
 builder.Services.AddScoped<IBulkQuestionRepository, BulkQuestionRepository>();
 builder.Services.AddScoped<IBulkQuestionService, BulkQuestionService>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -339,8 +339,50 @@
 //        }
 //    }
 //}
+//using LXP.Common.DTO;
+//using LXP.Core.IServices;
+//using LXP.Data.IRepository;
+//using System;
+//using System.Collections.Generic;
+
+//namespace LXP.Core.Services
+//{
+//    public class QuizQuestionService : IQuizQuestionService
+//    {
+//        private readonly IQuizQuestionRepository _quizQuestionRepository;
+
+//        public QuizQuestionService(IQuizQuestionRepository quizQuestionRepository)
+//        {
+//            _quizQuestionRepository = quizQuestionRepository;
+//        }
+
+//        public Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
+//        {
+//            return _quizQuestionRepository.AddQuestion(quizQuestionDto, options);
+//        }
+
+//        public bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
+//        {
+//            return _quizQuestionRepository.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
+//        }
+
+
+//        public bool DeleteQuestion(Guid quizQuestionId)
+//        {
+//            return _quizQuestionRepository.DeleteQuestion(quizQuestionId);
+//        }
+
+//        public List<QuizQuestionDto> GetAllQuestions()
+//        {
+//            return _quizQuestionRepository.GetAllQuestions();
+//        }
+//    }
+//}
+
 using LXP.Common.DTO;
+using LXP.Common.ViewModels;
 using LXP.Core.IServices;
+using LXP.Common.Entities;
 using LXP.Data.IRepository;
 using System;
 using System.Collections.Generic;
@@ -349,32 +391,35 @@ namespace LXP.Core.Services
 {
     public class QuizQuestionService : IQuizQuestionService
     {
-        private readonly IQuizQuestionRepository _quizQuestionRepository;
+        private readonly IQuizQuestionRepository _questionRepository;
 
-        public QuizQuestionService(IQuizQuestionRepository quizQuestionRepository)
+        public QuizQuestionService(IQuizQuestionRepository questionRepository)
         {
-            _quizQuestionRepository = quizQuestionRepository;
+            _questionRepository = questionRepository;
         }
 
-        public Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
+        public object AddQuestion(QuizQuestionViewModel question)
         {
-            return _quizQuestionRepository.AddQuestion(quizQuestionDto, options);
-        }
+            try
+            {
+                // Convert the view model to DTO
+                QuizQuestionDto questionDto = new QuizQuestionDto
+                {
+                    QuizId = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                    QuestionType = question.QuestionType,
+                    Question = question.Question,
+                    Options = question.Options
+                };
 
-        public bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
-        {
-            return _quizQuestionRepository.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
-        }
+                // Save the question to the repository
+                var savedQuestionDto = _questionRepository.AddQuestion(questionDto);
 
-
-        public bool DeleteQuestion(Guid quizQuestionId)
-        {
-            return _quizQuestionRepository.DeleteQuestion(quizQuestionId);
-        }
-
-        public List<QuizQuestionDto> GetAllQuestions()
-        {
-            return _quizQuestionRepository.GetAllQuestions();
+                return savedQuestionDto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while adding the question: {ex.Message}", ex);
+            }
         }
     }
 }

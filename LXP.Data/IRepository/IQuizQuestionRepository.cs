@@ -64,6 +64,7 @@
 //     }
 // }
 using LXP.Common.DTO;
+using LXP.Common.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -71,14 +72,16 @@ namespace LXP.Data.IRepository
 {
     public interface IQuizQuestionRepository
     {
-        Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
-        bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
-        bool DeleteQuestion(Guid quizQuestionId);
-        List<QuizQuestionDto> GetAllQuestions();
-        void DecrementQuestionNos(Guid deletedQuestionId);
-        int GetNextQuestionNo(Guid quizId);
-        Guid AddOption(QuestionOptionDto questionOptionDto, Guid quizQuestionId);
-        List<QuestionOptionDto> GetOptionsByQuestionId(Guid quizQuestionId);
-        bool ValidateOptionsByQuestionType(string questionType, List<QuestionOptionDto> options);
+        QuizQuestionDto AddQuestion(QuizQuestionDto question);
+        void AddOption(List<QuestionOptionDto> questionOptions, Guid quizQuestionId);
+        //bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+        //bool DeleteQuestion(Guid quizQuestionId);
+        //List<QuizQuestionDto> GetAllQuestions();
+        //void DecrementQuestionNos(Guid deletedQuestionId);
+        //int GetNextQuestionNo(Guid quizId);
+        //Guid AddOption(QuestionOptionDto questionOptionDto, Guid quizQuestionId);
+        //List<QuestionOptionDto> GetOptionsByQuestionId(Guid quizQuestionId);
+        //bool ValidateOptionsByQuestionType(string questionType, List<QuestionOptionDto> options);
     }
 }
+

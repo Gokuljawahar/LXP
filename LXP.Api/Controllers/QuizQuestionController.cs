@@ -298,7 +298,60 @@
 //        }
 //    }
 //}
+//using LXP.Common.DTO;
+//using LXP.Core.IServices;
+//using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Mvc;
+//using System.Collections.Generic;
+
+//namespace LXP.Api.Controllers
+//{
+//    [Route("api/[controller]")]
+//    [ApiController]
+//    public class QuizQuestionsController : ControllerBase
+//    {
+//        private readonly IQuizQuestionService _quizQuestionService;
+
+//        public QuizQuestionsController(IQuizQuestionService quizQuestionService)
+//        {
+//            _quizQuestionService = quizQuestionService;
+//        }
+//        [HttpPost("AddQuestion")]
+
+//        public IActionResult AddQuestion([FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
+
+//        {
+
+//            var result = _quizQuestionService.AddQuestion(quizQuestionDto, options);
+//            return Ok(result);
+//        }
+
+
+//        [HttpPut("UpdateQuestion")]
+//        public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
+//        {
+//            var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
+//            return Ok(result);
+//        }
+
+//        [HttpDelete("DeleteQuestion")]
+//        public IActionResult DeleteQuestion(Guid quizQuestionId)
+//        {
+//            var result = _quizQuestionService.DeleteQuestion(quizQuestionId);
+//            return Ok(result);
+//        }
+
+//        [HttpGet("GetAllQuestions")]
+//        public IActionResult GetAllQuestions()
+//        {
+//            var result = _quizQuestionService.GetAllQuestions();
+//            return Ok(result);
+//        }
+//    }
+//}
+
 using LXP.Common.DTO;
+using LXP.Common.ViewModels;
 using LXP.Core.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -308,44 +361,27 @@ namespace LXP.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class QuizQuestionsController : ControllerBase
+    public class QuestionController : ControllerBase
     {
-        private readonly IQuizQuestionService _quizQuestionService;
+        private readonly IQuizQuestionService _questionService;
 
-        public QuizQuestionsController(IQuizQuestionService quizQuestionService)
+        public QuestionController(IQuizQuestionService questionService)
         {
-            _quizQuestionService = quizQuestionService;
+            _questionService = questionService;
         }
+
         [HttpPost("AddQuestion")]
-
-        public IActionResult AddQuestion([FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
-
+        public IActionResult AddQuestion([FromBody] QuizQuestionViewModel question)
         {
-
-            var result = _quizQuestionService.AddQuestion(quizQuestionDto, options);
-            return Ok(result);
-        }
-
-
-        [HttpPut("UpdateQuestion")]
-        public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
-        {
-            var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
-            return Ok(result);
-        }
-
-        [HttpDelete("DeleteQuestion")]
-        public IActionResult DeleteQuestion(Guid quizQuestionId)
-        {
-            var result = _quizQuestionService.DeleteQuestion(quizQuestionId);
-            return Ok(result);
-        }
-
-        [HttpGet("GetAllQuestions")]
-        public IActionResult GetAllQuestions()
-        {
-            var result = _quizQuestionService.GetAllQuestions();
-            return Ok(result);
+            try
+            {
+                var result = _questionService.AddQuestion(question);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while adding the question: {ex.Message}");
+            }
         }
     }
 }

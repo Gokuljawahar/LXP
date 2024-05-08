@@ -27,7 +27,23 @@
 //    Task DeleteQuestionAsync(Guid questionId);
 //}
 
+//using LXP.Common.DTO;
+//using System;
+//using System.Collections.Generic;
+
+//namespace LXP.Core.IServices
+//{
+//    public interface IQuizQuestionService
+//    {
+//        Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+//        bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+//        bool DeleteQuestion(Guid quizQuestionId);
+//        List<QuizQuestionDto> GetAllQuestions();
+//    }
+//}
+
 using LXP.Common.DTO;
+using LXP.Common.ViewModels;
 using System;
 using System.Collections.Generic;
 
@@ -35,9 +51,9 @@ namespace LXP.Core.IServices
 {
     public interface IQuizQuestionService
     {
-        Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
-        bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
-        bool DeleteQuestion(Guid quizQuestionId);
-        List<QuizQuestionDto> GetAllQuestions();
+        object AddQuestion(QuizQuestionViewModel question);
+        //bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+        //bool DeleteQuestion(Guid quizQuestionId);
+        //List<QuizQuestionDto> GetAllQuestions();
     }
 }
