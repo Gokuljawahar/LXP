@@ -77,8 +77,8 @@ namespace LXP.Data.IRepository
         List<QuizQuestionDto> GetAllQuestions();
         void DecrementQuestionNos(Guid deletedQuestionId);
         int GetNextQuestionNo(Guid quizId);
-        Guid AddOption(QuestionOptionDto questionOptionDto, Guid quizQuestionId);
-        List<QuestionOptionDto> GetOptionsByQuestionId(Guid quizQuestionId);
+        Guid AddQuestionOption(QuestionOptionDto questionOptionDto, Guid quizQuestionId);
+        List<QuestionOptionDto> GetQuestionOptionsById(Guid quizQuestionId);
         bool ValidateOptionsByQuestionType(string questionType, List<QuestionOptionDto> options);
     }
 }

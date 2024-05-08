@@ -298,6 +298,16 @@
 //        }
 //    }
 //}
+//[HttpPost("AddQuestion")]
+
+//public IActionResult AddQuestion([FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
+
+//{
+
+//    var result = _quizQuestionService.AddQuestion(quizQuestionDto, options);
+//    return Ok(result);
+//}
+
 using LXP.Common.DTO;
 using LXP.Core.IServices;
 using Microsoft.AspNetCore.Http;
@@ -316,21 +326,25 @@ namespace LXP.Api.Controllers
         {
             _quizQuestionService = quizQuestionService;
         }
+
         [HttpPost("AddQuestion")]
-
-        public IActionResult AddQuestion([FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
-
+        public IActionResult AddQuestion([FromBody] QuizQuestionDto quizQuestionDto)
         {
-
-            var result = _quizQuestionService.AddQuestion(quizQuestionDto, options);
+            var result = _quizQuestionService.AddQuestion(quizQuestionDto, quizQuestionDto.Options);
             return Ok(result);
         }
 
 
+        //[HttpPut("UpdateQuestion")]
+        //public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
+        //{
+        //    var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
+        //    return Ok(result);
+        //}
         [HttpPut("UpdateQuestion")]
-        public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto, [FromQuery] List<QuestionOptionDto> options)
+        public IActionResult UpdateQuestion(Guid quizQuestionId, [FromBody] QuizQuestionDto quizQuestionDto)
         {
-            var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
+            var result = _quizQuestionService.UpdateQuestion(quizQuestionId, quizQuestionDto, quizQuestionDto.Options);
             return Ok(result);
         }
 
