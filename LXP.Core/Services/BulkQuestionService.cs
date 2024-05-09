@@ -4,6 +4,7 @@ using LXP.Core.IServices;
 using Microsoft.AspNetCore.Http;
 using OfficeOpenXml;
 using LXP.Data.IRepository;
+using LXP.Core.Repositories;
 
 namespace LXP.Core.Services
 {
@@ -72,11 +73,13 @@ namespace LXP.Core.Services
 
                         // Loop through each question and add to repository
                         foreach (var quizQuestion in quizQuestions)
+
                         {
+
                             // Add question to the repository
                             QuizQuestion questionEntity = new QuizQuestion
                             {
-                                QuizId = Guid.Parse("355c28ad-f81f-4242-b406-cc932d710df8"),
+                                QuizId = Guid.Parse("887a0bab-b292-4253-9b4f-9150586cc0c6"),
                                 QuestionNo = quizQuestion.QuestionNumber,
                                 QuestionType = quizQuestion.QuestionType,
                                 Question = quizQuestion.Question,
@@ -110,15 +113,20 @@ namespace LXP.Core.Services
                             // Save options to the repository
                             _bulkQuestionRepository.AddOptions(optionEntities, questionEntity.QuizQuestionId);
                         }
-
                         return quizQuestions;
                     }
+
+                   
                 }
+            
             }
             catch (Exception ex)
             {
                 throw new Exception($"An error occurred while importing quiz data: {ex.Message}", ex);
             }
+            
+
+
         }
 
         private string[] ExtractOptions(ExcelWorksheet worksheet, int row, int startColumn, int count)
@@ -133,3 +141,5 @@ namespace LXP.Core.Services
         }
     }
 }
+
+
