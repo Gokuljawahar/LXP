@@ -76,7 +76,7 @@ namespace LXP.Core.Services
                             // Add question to the repository
                             QuizQuestion questionEntity = new QuizQuestion
                             {
-                                QuizId = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6"),
+                                QuizId = Guid.Parse("355c28ad-f81f-4242-b406-cc932d710df8"),
                                 QuestionNo = quizQuestion.QuestionNumber,
                                 QuestionType = quizQuestion.QuestionType,
                                 Question = quizQuestion.Question,

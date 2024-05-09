@@ -20,10 +20,11 @@ namespace LXP.Core.Services
         }
 
 
-        
-        public void CreateQuiz(Guid quizId, Guid courseId, Guid topicId, string nameOfQuiz, int duration, int passMark, string createdBy, DateTime createdAt)
+
+
+        public void CreateQuiz(QuizDto quiz)
         {
-            _quizRepository.CreateQuiz(quizId, courseId, topicId, nameOfQuiz, duration, passMark, createdBy, createdAt);
+            _quizRepository.CreateQuiz(quiz);
         }
 
         public void UpdateQuiz(QuizDto quiz)
@@ -52,3 +53,8 @@ namespace LXP.Core.Services
 }
 
 
+
+//public void CreateQuiz(Guid quizId, Guid courseId, Guid topicId, string nameOfQuiz, int duration, int passMark, string createdBy, DateTime createdAt)
+//{
+//    _quizRepository.CreateQuiz(quizId, courseId, topicId, nameOfQuiz, duration, passMark, createdBy, createdAt);
+//}

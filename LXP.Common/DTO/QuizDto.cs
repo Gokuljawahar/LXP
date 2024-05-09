@@ -24,13 +24,19 @@
 //         public DateTime? ModifiedAt { get; set; }
 //     }
 // }
+// public class QuizDto
+// {
+//     public Guid QuizId { get; set; }
+//     public int Duration { get; set; }
+//     public int PassMark { get; set; }
+// }
 
 
 
 public class QuizDto
 {
     public Guid QuizId { get; set; }
-    public Guid CourseId { get; set; }   
+    public Guid CourseId { get; set; }
     public Guid TopicId { get; set; }
     public string NameOfQuiz { get; set; } = null!;
     public int Duration { get; set; }
@@ -41,9 +47,3 @@ public class QuizDto
     public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
     
 }
-// public class QuizDto
-// {
-//     public Guid QuizId { get; set; }
-//     public int Duration { get; set; }
-//     public int PassMark { get; set; }
-// }

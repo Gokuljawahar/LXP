@@ -21,18 +21,19 @@ namespace LXP.Data.Repository
             _LXPDbContext = dbContext;
         }
 
-        public void CreateQuiz(Guid quizId, Guid courseId, Guid topicId, string nameOfQuiz, int duration, int passMark, string createdBy, DateTime createdAt)
+
+        public void CreateQuiz(QuizDto quiz)
         {
             var quizEntity = new Quiz
             {
-                QuizId = quizId,
-                CourseId = courseId,
-                TopicId = topicId,
-                NameOfQuiz = nameOfQuiz,
-                Duration = duration,
-                PassMark = passMark,
-                CreatedBy = createdBy,
-                CreatedAt = createdAt,
+                QuizId = quiz.QuizId,
+                CourseId = quiz.CourseId,
+                TopicId = quiz.TopicId,
+                NameOfQuiz = quiz.NameOfQuiz,
+                Duration = quiz.Duration,
+                PassMark = quiz.PassMark,
+                CreatedBy = quiz.CreatedBy,
+                CreatedAt = quiz.CreatedAt
             };
 
             _LXPDbContext.Quizzes.Add(quizEntity);
@@ -100,6 +101,25 @@ namespace LXP.Data.Repository
         // 
     }
 }
+
+
+//public void CreateQuiz(Guid quizId, Guid courseId, Guid topicId, string nameOfQuiz, int duration, int passMark, string createdBy, DateTime createdAt)
+//{
+//    var quizEntity = new Quiz
+//    {
+//        QuizId = quizId,
+//        CourseId = courseId,
+//        TopicId = topicId,
+//        NameOfQuiz = nameOfQuiz,
+//        Duration = duration,
+//        PassMark = passMark,
+//        CreatedBy = createdBy,
+//        CreatedAt = createdAt,
+//    };
+
+//    _LXPDbContext.Quizzes.Add(quizEntity);
+//    _LXPDbContext.SaveChanges();
+//}
 
 //using LXP.Common.DTO;
 //using LXP.Data.IRepository;
