@@ -18,22 +18,7 @@ namespace LXP.Api.Controllers
             _quizService = quizService;
         }
 
-        //[HttpGet("{id}")]
-        //public ActionResult<QuizDto> GetQuizById(Guid id)
-        //{
-        //    var quiz = _quizService.GetQuizById(id);
-        //    if (quiz == null)
-        //        return NotFound();
-
-        //    return Ok(quiz);
-        //}
-
-        //[HttpGet]
-        //public ActionResult<IEnumerable<QuizDto>> GetAllQuizzes()
-        //{
-        //    var quizzes = _quizService.GetAllQuizzes();
-        //    return Ok(quizzes);
-        //}
+      
         [HttpGet("{id}")]
         public ActionResult<QuizDto> GetQuizById(Guid id)
         {
@@ -99,29 +84,7 @@ namespace LXP.Api.Controllers
             return CreatedAtAction(nameof(GetQuizById), new { id = quizId }, new { quiz.NameOfQuiz, quiz.Duration, quiz.PassMark });
         }
 
-        //[HttpPut("{id}")]
-        //public ActionResult UpdateQuiz(Guid id, [FromBody] QuizDto request)
-        //{
-        //    // Check if the provided ID matches the ID in the request body
-        //    if (id != request.QuizId)
-        //        return BadRequest();
-
-        //    // Retrieve the existing quiz by ID
-        //    var existingQuiz = _quizService.GetQuizById(id);
-        //    if (existingQuiz == null)
-        //        return NotFound();
-
-        //    // Update only the allowed fields
-        //    existingQuiz.NameOfQuiz = request.NameOfQuiz;
-        //    existingQuiz.Duration = request.Duration;
-        //    existingQuiz.PassMark = request.PassMark;
-
-        //    // Call the service method to update the quiz
-        //    _quizService.UpdateQuiz(existingQuiz);
-
-        //    // Return NoContent if successful
-        //    return NoContent();
-        //}
+        
         [HttpPut("{id}")]
         public ActionResult UpdateQuiz(Guid id, [FromBody] UpdateQuizDto request)
         {
@@ -151,6 +114,46 @@ namespace LXP.Api.Controllers
         }
     }
 }
+//[HttpGet("{id}")]
+//public ActionResult<QuizDto> GetQuizById(Guid id)
+//{
+//    var quiz = _quizService.GetQuizById(id);
+//    if (quiz == null)
+//        return NotFound();
+
+//    return Ok(quiz);
+//}
+
+//[HttpGet]
+//public ActionResult<IEnumerable<QuizDto>> GetAllQuizzes()
+//{
+//    var quizzes = _quizService.GetAllQuizzes();
+//    return Ok(quizzes);
+//}
+
+//[HttpPut("{id}")]
+//public ActionResult UpdateQuiz(Guid id, [FromBody] QuizDto request)
+//{
+//    // Check if the provided ID matches the ID in the request body
+//    if (id != request.QuizId)
+//        return BadRequest();
+
+//    // Retrieve the existing quiz by ID
+//    var existingQuiz = _quizService.GetQuizById(id);
+//    if (existingQuiz == null)
+//        return NotFound();
+
+//    // Update only the allowed fields
+//    existingQuiz.NameOfQuiz = request.NameOfQuiz;
+//    existingQuiz.Duration = request.Duration;
+//    existingQuiz.PassMark = request.PassMark;
+
+//    // Call the service method to update the quiz
+//    _quizService.UpdateQuiz(existingQuiz);
+
+//    // Return NoContent if successful
+//    return NoContent();
+//}
 //[HttpPost]
 //[ProducesResponseType(StatusCodes.Status201Created)]
 //public ActionResult CreateQuiz([FromBody] QuizDto request)
