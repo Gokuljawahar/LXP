@@ -9,17 +9,14 @@ namespace LXP.Data.IRepository
 {
     public interface IQuizRepository
     {
-        
-            QuizDto GetQuizById(Guid quizId);
-            IEnumerable<QuizDto> GetAllQuizzes();
-      
-            void CreateQuiz(QuizDto quiz);
-            void UpdateQuiz(QuizDto quiz);
-            void DeleteQuiz(Guid quizId);
-        
+
+        QuizDto GetQuizById(Guid quizId);
+        IEnumerable<QuizDto> GetAllQuizzes();
+
+        void CreateQuiz(QuizDto quiz);
+        void UpdateQuiz(QuizDto quiz);
+        void DeleteQuiz(Guid quizId);
+
 
     }
 }
-
-
-// void CreateQuiz(Guid quizId, Guid courseId, Guid topicId, string nameOfQuiz, int duration, int passMark, string createdBy, DateTime createdAt);

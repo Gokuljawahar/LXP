@@ -1,4 +1,5 @@
-﻿using LXP.Common.DTO;
+﻿
+using LXP.Common.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

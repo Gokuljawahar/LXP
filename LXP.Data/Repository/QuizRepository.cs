@@ -24,14 +24,26 @@ namespace LXP.Data.Repository
 
         public void CreateQuiz(QuizDto quiz)
         {
+            // Validate NameOfQuiz
+            if (string.IsNullOrWhiteSpace(quiz.NameOfQuiz))
+                throw new Exception("NameOfQuiz cannot be null or empty.");
+
+            // Validate Duration
+            if (!int.TryParse(quiz.Duration.ToString(), out int durationValue) || durationValue <= 0)
+                throw new Exception("Duration must be a positive integer.");
+
+            // Validate PassMark
+            if (!int.TryParse(quiz.PassMark.ToString(), out int passMarkValue) || passMarkValue <= 0)
+                throw new Exception("PassMark must be a positive integer.");
+
             var quizEntity = new Quiz
             {
                 QuizId = quiz.QuizId,
                 CourseId = quiz.CourseId,
                 TopicId = quiz.TopicId,
                 NameOfQuiz = quiz.NameOfQuiz,
-                Duration = quiz.Duration,
-                PassMark = quiz.PassMark,
+                Duration = durationValue,
+                PassMark = passMarkValue,
                 CreatedBy = quiz.CreatedBy,
                 CreatedAt = quiz.CreatedAt
             };
@@ -39,6 +51,8 @@ namespace LXP.Data.Repository
             _LXPDbContext.Quizzes.Add(quizEntity);
             _LXPDbContext.SaveChanges();
         }
+        
+        
 
         public void UpdateQuiz(QuizDto quiz)
         {
@@ -302,4 +316,3 @@ namespace LXP.Data.Repository
 //     _LXPDbContext.Quizzes.Add(quizEntity);
 //     _LXPDbContext.SaveChanges();
 // }
-

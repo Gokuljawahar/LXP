@@ -1,4 +1,5 @@
 ﻿
+
 using LXP.Common.DTO;
 using LXP.Core.IServices;
 using LXP.Data.IRepository;
@@ -48,7 +49,7 @@ namespace LXP.Core.Services
             return _quizRepository.GetQuizById(quizId);
         }
 
-    
+
     }
 }
 

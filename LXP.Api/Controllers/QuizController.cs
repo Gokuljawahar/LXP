@@ -18,13 +18,17 @@ namespace LXP.Api.Controllers
             _quizService = quizService;
         }
 
-      
+
         [HttpGet("{id}")]
         public ActionResult<QuizDto> GetQuizById(Guid id)
         {
             var quiz = _quizService.GetQuizById(id);
+            //if (quiz == null)
+            //    return NotFound();
+
+            // Validate quiz existence
             if (quiz == null)
-                return NotFound();
+                throw new Exception($"Quiz with id {id} not found.");
 
             var quizResponse = new
             {
@@ -36,6 +40,7 @@ namespace LXP.Api.Controllers
 
             return Ok(quizResponse);
         }
+
 
         [HttpGet]
         public ActionResult<IEnumerable<QuizDto>> GetAllQuizzes()
@@ -84,19 +89,31 @@ namespace LXP.Api.Controllers
             return CreatedAtAction(nameof(GetQuizById), new { id = quizId }, new { quiz.NameOfQuiz, quiz.Duration, quiz.PassMark });
         }
 
-        
+
         [HttpPut("{id}")]
         public ActionResult UpdateQuiz(Guid id, [FromBody] UpdateQuizDto request)
         {
-            // Retrieve the existing quiz by ID
+            // Validate quiz existence
             var existingQuiz = _quizService.GetQuizById(id);
             if (existingQuiz == null)
-                return NotFound();
+                throw new Exception($"Quiz with id {id} not found.");
+
+            // Validate NameOfQuiz
+            if (string.IsNullOrWhiteSpace(request.NameOfQuiz))
+                throw new Exception("NameOfQuiz cannot be null or empty.");
+
+            // Validate Duration
+            if (!int.TryParse(request.Duration.ToString(), out int durationValue) || durationValue <= 0)
+                throw new Exception("Duration must be a positive integer.");
+
+            // Validate PassMark
+            if (!int.TryParse(request.PassMark.ToString(), out int passMarkValue) || passMarkValue <= 0)
+                throw new Exception("PassMark must be a positive integer.");
 
             // Update only the allowed fields
             existingQuiz.NameOfQuiz = request.NameOfQuiz;
-            existingQuiz.Duration = request.Duration;
-            existingQuiz.PassMark = request.PassMark;
+            existingQuiz.Duration = durationValue;
+            existingQuiz.PassMark = passMarkValue;
 
             // Call the service method to update the quiz
             _quizService.UpdateQuiz(existingQuiz);
@@ -109,11 +126,22 @@ namespace LXP.Api.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteQuiz(Guid id)
         {
+            // Validate quiz existence
+            var existingQuiz = _quizService.GetQuizById(id);
+            if (existingQuiz == null)
+                throw new Exception($"Quiz with id {id} not found.");
+
             _quizService.DeleteQuiz(id);
             return NoContent();
         }
     }
 }
+
+
+
+
+
+
 //[HttpGet("{id}")]
 //public ActionResult<QuizDto> GetQuizById(Guid id)
 //{
