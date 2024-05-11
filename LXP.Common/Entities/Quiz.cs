@@ -15,6 +15,8 @@ public partial class Quiz
 
     public int Duration { get; set; }
 
+    public int? AttemptsAllowed { get; set; }
+
     public int PassMark { get; set; }
 
     public string CreatedBy { get; set; } = null!;

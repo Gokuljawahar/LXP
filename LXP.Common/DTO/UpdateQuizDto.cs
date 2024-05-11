@@ -10,7 +10,9 @@ namespace LXP.Common.DTO
     {
         public string NameOfQuiz { get; set; } = null!;
         public int Duration { get; set; }
+        public int? AttemptsAllowed { get; set; } // Added
         public int PassMark { get; set; }
     }
+
 
 }

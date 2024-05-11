@@ -20,7 +20,7 @@ Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
 
-builder.Host.UseSerilog(); // Set up Serilog as the logging provider
+builder.Host.UseSerilog(); 
 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 

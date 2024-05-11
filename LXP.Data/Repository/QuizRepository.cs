@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using LXP.Common.Entities;
 using LXP.Data.DBContexts;
 
+
 namespace LXP.Data.Repository
 {
     public class QuizRepository : IQuizRepository
@@ -29,12 +30,16 @@ namespace LXP.Data.Repository
                 throw new Exception("NameOfQuiz cannot be null or empty.");
 
             // Validate Duration
-            if (!int.TryParse(quiz.Duration.ToString(), out int durationValue) || durationValue <= 0)
+            if (quiz.Duration <= 0)
                 throw new Exception("Duration must be a positive integer.");
 
             // Validate PassMark
-            if (!int.TryParse(quiz.PassMark.ToString(), out int passMarkValue) || passMarkValue <= 0)
+            if (quiz.PassMark <= 0)
                 throw new Exception("PassMark must be a positive integer.");
+
+            // Validate AttemptsAllowed
+            if (quiz.AttemptsAllowed.HasValue && quiz.AttemptsAllowed <= 0)
+                throw new Exception("AttemptsAllowed must be null or a positive integer.");
 
             var quizEntity = new Quiz
             {
@@ -42,8 +47,9 @@ namespace LXP.Data.Repository
                 CourseId = quiz.CourseId,
                 TopicId = quiz.TopicId,
                 NameOfQuiz = quiz.NameOfQuiz,
-                Duration = durationValue,
-                PassMark = passMarkValue,
+                Duration = quiz.Duration,
+                PassMark = quiz.PassMark,
+                AttemptsAllowed = quiz.AttemptsAllowed,
                 CreatedBy = quiz.CreatedBy,
                 CreatedAt = quiz.CreatedAt
             };
@@ -51,23 +57,36 @@ namespace LXP.Data.Repository
             _LXPDbContext.Quizzes.Add(quizEntity);
             _LXPDbContext.SaveChanges();
         }
-        
-        
 
         public void UpdateQuiz(QuizDto quiz)
         {
+            // Validate NameOfQuiz
+            if (string.IsNullOrWhiteSpace(quiz.NameOfQuiz))
+                throw new Exception("NameOfQuiz cannot be null or empty.");
+
+            // Validate Duration
+            if (quiz.Duration <= 0)
+                throw new Exception("Duration must be a positive integer.");
+
+            // Validate PassMark
+            if (quiz.PassMark <= 0)
+                throw new Exception("PassMark must be a positive integer.");
+
+            // Validate AttemptsAllowed
+            if (quiz.AttemptsAllowed.HasValue && quiz.AttemptsAllowed <= 0)
+                throw new Exception("AttemptsAllowed must be null or a positive integer.");
+
             var quizEntity = _LXPDbContext.Quizzes.Find(quiz.QuizId);
             if (quizEntity != null)
             {
                 quizEntity.NameOfQuiz = quiz.NameOfQuiz;
                 quizEntity.Duration = quiz.Duration;
                 quizEntity.PassMark = quiz.PassMark;
+                quizEntity.AttemptsAllowed = quiz.AttemptsAllowed;
 
                 _LXPDbContext.SaveChanges();
             }
         }
-
-
 
         public void DeleteQuiz(Guid quizId)
         {
@@ -79,7 +98,6 @@ namespace LXP.Data.Repository
             }
         }
 
-
         public IEnumerable<QuizDto> GetAllQuizzes()
         {
             return _LXPDbContext.Quizzes
@@ -90,11 +108,11 @@ namespace LXP.Data.Repository
                     TopicId = q.TopicId,
                     NameOfQuiz = q.NameOfQuiz,
                     Duration = q.Duration,
-                    PassMark = q.PassMark
+                    PassMark = q.PassMark,
+                    AttemptsAllowed = q.AttemptsAllowed
                 })
                 .ToList();
         }
-
 
         public QuizDto GetQuizById(Guid quizId)
         {
@@ -107,14 +125,14 @@ namespace LXP.Data.Repository
                     TopicId = q.TopicId,
                     NameOfQuiz = q.NameOfQuiz,
                     Duration = q.Duration,
-                    PassMark = q.PassMark
+                    PassMark = q.PassMark,
+                    AttemptsAllowed = q.AttemptsAllowed
                 })
                 .FirstOrDefault();
         }
-
-        // 
     }
 }
+
 
 
 //public void CreateQuiz(Guid quizId, Guid courseId, Guid topicId, string nameOfQuiz, int duration, int passMark, string createdBy, DateTime createdAt)

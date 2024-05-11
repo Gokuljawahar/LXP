@@ -1,5 +1,6 @@
 ﻿
 
+
 using LXP.Common.DTO;
 using LXP.Core.IServices;
 using LXP.Data.IRepository;
@@ -52,6 +53,13 @@ namespace LXP.Core.Services
 
     }
 }
+
+
+
+//public void CreateQuiz(Guid quizId, Guid courseId, Guid topicId, string nameOfQuiz, int duration, int passMark, string createdBy, DateTime createdAt)
+//{
+//    _quizRepository.CreateQuiz(quizId, courseId, topicId, nameOfQuiz, duration, passMark, createdBy, createdAt);
+//}
 
 
 
