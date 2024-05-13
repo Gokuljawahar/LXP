@@ -1,147 +1,147 @@
-﻿using LXP.Common.Entities;
-using LXP.Common.ViewModels;
-using LXP.Core.IServices;
-using Microsoft.AspNetCore.Http;
-using OfficeOpenXml;
-using LXP.Data.IRepository;
-using LXP.Core.Repositories;
+﻿//using LXP.Common.Entities;
+//using LXP.Common.ViewModels;
+//using LXP.Core.IServices;
+//using Microsoft.AspNetCore.Http;
+//using OfficeOpenXml;
+//using LXP.Data.IRepository;
+//using LXP.Core.Repositories;
 
-namespace LXP.Core.Services
-{
-    public class BulkQuestionService : IBulkQuestionService
-    {
-        private readonly IBulkQuestionRepository _bulkQuestionRepository;
+//namespace LXP.Core.Services
+//{
+//    public class BulkQuestionService : IBulkQuestionService
+//    {
+//        private readonly IBulkQuestionRepository _bulkQuestionRepository;
 
-        public BulkQuestionService(IBulkQuestionRepository bulkQuestionRepository)
-        {
-            _bulkQuestionRepository = bulkQuestionRepository;
-        }
-        public object ImportQuizData(IFormFile file)
-        {
-            try
-            {
-                if (file == null || file.Length <= 0)
-                    throw new ArgumentException("File is empty.");
+//        public BulkQuestionService(IBulkQuestionRepository bulkQuestionRepository)
+//        {
+//            _bulkQuestionRepository = bulkQuestionRepository;
+//        }
+//        public object ImportQuizData(IFormFile file)
+//        {
+//            try
+//            {
+//                if (file == null || file.Length <= 0)
+//                    throw new ArgumentException("File is empty.");
 
-                using (var stream = new MemoryStream())
-                {
-                    file.CopyTo(stream);
-                    stream.Position = 0;
+//                using (var stream = new MemoryStream())
+//                {
+//                    file.CopyTo(stream);
+//                    stream.Position = 0;
 
-                    using (ExcelPackage package = new ExcelPackage(stream))
-                    {
-                        ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
-                        if (worksheet == null)
-                            throw new ArgumentException("Worksheet not found.");
+//                    using (ExcelPackage package = new ExcelPackage(stream))
+//                    {
+//                        ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+//                        if (worksheet == null)
+//                            throw new ArgumentException("Worksheet not found.");
 
-                        List<QuizQuestionViewModel> quizQuestions = new List<QuizQuestionViewModel>();
+//                        List<QuizQuestionViewModel> quizQuestions = new List<QuizQuestionViewModel>();
 
-                        // Loop through each row in the worksheet
-                        for (int row = 3; row <= worksheet.Dimension.End.Row; row++)
-                        {
-                            string type = worksheet.Cells[row, 2].Value?.ToString();
+//                        // Loop through each row in the worksheet
+//                        for (int row = 3; row <= worksheet.Dimension.End.Row; row++)
+//                        {
+//                            string type = worksheet.Cells[row, 2].Value?.ToString();
 
-                            if (type == "MCQ" || type == "TF" || type == "MSQ")
-                            {
-                                QuizQuestionViewModel quizQuestion = new QuizQuestionViewModel
-                                {
-                                    QuestionType = type,
-                                    QuestionNumber = Convert.ToInt32(worksheet.Cells[row, 1].Value),
-                                    Question = worksheet.Cells[row, 3].Value.ToString(),
-                                };
+//                            if (type == "MCQ" || type == "TF" || type == "MSQ")
+//                            {
+//                                QuizQuestionViewModel quizQuestion = new QuizQuestionViewModel
+//                                {
+//                                    QuestionType = type,
+//                                    QuestionNumber = Convert.ToInt32(worksheet.Cells[row, 1].Value),
+//                                    Question = worksheet.Cells[row, 3].Value.ToString(),
+//                                };
 
-                                // Extract options based on question type
-                                if (type == "MCQ")
-                                {
-                                    quizQuestion.Options = ExtractOptions(worksheet, row, 4, 4);
-                                    quizQuestion.CorrectOptions = ExtractOptions(worksheet, row, 12, 1);
-                                }
-                                else if (type == "TF")
-                                {
-                                    quizQuestion.Options = ExtractOptions(worksheet, row, 4, 2);
-                                    quizQuestion.CorrectOptions = ExtractOptions(worksheet, row, 12, 1);
-                                }
-                                else if (type == "MSQ")
-                                {
-                                    quizQuestion.Options = ExtractOptions(worksheet, row, 4, 8);
-                                    quizQuestion.CorrectOptions = ExtractOptions(worksheet, row, 12, 3);
-                                }
+//                                // Extract options based on question type
+//                                if (type == "MCQ")
+//                                {
+//                                    quizQuestion.Options = ExtractOptions(worksheet, row, 4, 4);
+//                                    quizQuestion.CorrectOptions = ExtractOptions(worksheet, row, 12, 1);
+//                                }
+//                                else if (type == "TF")
+//                                {
+//                                    quizQuestion.Options = ExtractOptions(worksheet, row, 4, 2);
+//                                    quizQuestion.CorrectOptions = ExtractOptions(worksheet, row, 12, 1);
+//                                }
+//                                else if (type == "MSQ")
+//                                {
+//                                    quizQuestion.Options = ExtractOptions(worksheet, row, 4, 8);
+//                                    quizQuestion.CorrectOptions = ExtractOptions(worksheet, row, 12, 3);
+//                                }
 
-                                quizQuestions.Add(quizQuestion);
-                            }
-                        }
+//                                quizQuestions.Add(quizQuestion);
+//                            }
+//                        }
 
-                        // Loop through each question and add to repository
-                        foreach (var quizQuestion in quizQuestions)
+//                        // Loop through each question and add to repository
+//                        foreach (var quizQuestion in quizQuestions)
 
-                        {
+//                        {
 
-                            // Add question to the repository
-                            QuizQuestion questionEntity = new QuizQuestion
-                            {
-                                QuizId = Guid.Parse("887a0bab-b292-4253-9b4f-9150586cc0c6"),
-                                QuestionNo = quizQuestion.QuestionNumber,
-                                QuestionType = quizQuestion.QuestionType,
-                                Question = quizQuestion.Question,
-                                CreatedBy = "Admin",
-                                CreatedAt = DateTime.UtcNow
-                            };
+//                            // Add question to the repository
+//                            QuizQuestion questionEntity = new QuizQuestion
+//                            {
+//                                QuizId = Guid.Parse("98984911-1862-4745-92ba-570bff6bcf05"),
+//                                QuestionNo = quizQuestion.QuestionNumber,
+//                                QuestionType = quizQuestion.QuestionType,
+//                                Question = quizQuestion.Question,
+//                                CreatedBy = "Admin",
+//                                CreatedAt = DateTime.UtcNow
+//                            };
 
-                            // Save the question to get the QuizQuestionId
-                            _bulkQuestionRepository.AddQuestions(new List<QuizQuestion> { questionEntity });
+//                            // Save the question to get the QuizQuestionId
+//                            _bulkQuestionRepository.AddQuestions(new List<QuizQuestion> { questionEntity });
 
-                            // Add options associated with the question
-                            List<QuestionOption> optionEntities = new List<QuestionOption>();
-                            for (int i = 0; i < quizQuestion.Options.Length; i++)
-                            {
-                                if (!string.IsNullOrEmpty(quizQuestion.Options[i]))
-                                {
-                                    QuestionOption optionEntity = new QuestionOption
-                                    {
-                                        QuizQuestionId = questionEntity.QuizQuestionId,
-                                        Option = quizQuestion.Options[i],
-                                        IsCorrect = quizQuestion.CorrectOptions.Contains(quizQuestion.Options[i]),
-                                        CreatedAt = DateTime.UtcNow,
-                                        CreatedBy = "Admin",
-                                        ModifiedBy = "Admin2"
-                                    };
+//                            // Add options associated with the question
+//                            List<QuestionOption> optionEntities = new List<QuestionOption>();
+//                            for (int i = 0; i < quizQuestion.Options.Length; i++)
+//                            {
+//                                if (!string.IsNullOrEmpty(quizQuestion.Options[i]))
+//                                {
+//                                    QuestionOption optionEntity = new QuestionOption
+//                                    {
+//                                        QuizQuestionId = questionEntity.QuizQuestionId,
+//                                        Option = quizQuestion.Options[i],
+//                                        IsCorrect = quizQuestion.CorrectOptions.Contains(quizQuestion.Options[i]),
+//                                        CreatedAt = DateTime.UtcNow,
+//                                        CreatedBy = "Admin",
+//                                        ModifiedBy = "Admin2"
+//                                    };
 
-                                    optionEntities.Add(optionEntity);
-                                }
-                            }
+//                                    optionEntities.Add(optionEntity);
+//                                }
+//                            }
 
-                            // Save options to the repository
-                            _bulkQuestionRepository.AddOptions(optionEntities, questionEntity.QuizQuestionId);
-                        }
-                        return quizQuestions;
-                    }
-
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"An error occurred while importing quiz data: {ex.Message}", ex);
-            }
-        }
-
-        private string[] ExtractOptions(ExcelWorksheet worksheet, int row, int startColumn, int count)
-        {
-            string[] options = new string[count];
-            for (int i = 0; i < count; i++)
-            {
-                string option = worksheet.Cells[row, startColumn + i].Value?.ToString() ?? "";
-                options[i] = option;
-            }
-            return options;
-        }
-    }
-}
+//                            // Save options to the repository
+//                            _bulkQuestionRepository.AddOptions(optionEntities, questionEntity.QuizQuestionId);
+//                        }
+//                        return quizQuestions;
+//                    }
 
 
-/*
- * using LXP.Common.Entities;
+//                }
+
+//            }
+//            catch (Exception ex)
+//            {
+//                throw new Exception($"An error occurred while importing quiz data: {ex.Message}", ex);
+//            }
+//        }
+
+//        private string[] ExtractOptions(ExcelWorksheet worksheet, int row, int startColumn, int count)
+//        {
+//            string[] options = new string[count];
+//            for (int i = 0; i < count; i++)
+//            {
+//                string option = worksheet.Cells[row, startColumn + i].Value?.ToString() ?? "";
+//                options[i] = option;
+//            }
+//            return options;
+//        }
+//    }
+//}
+
+
+
+using LXP.Common.Entities;
 using LXP.Common.ViewModels;
 using LXP.Core.IServices;
 using Microsoft.AspNetCore.Http;
@@ -234,7 +234,7 @@ namespace LXP.Core.Services
                             // Add question to the repository
                             QuizQuestion questionEntity = new QuizQuestion
                             {
-                                QuizId = Guid.Parse("89251530-38fe-4ac5-9d4b-3406f48eda5b"),
+                                QuizId = Guid.Parse("98984911-1862-4745-92ba-570bff6bcf05"),
                                 QuestionNo = quizQuestion.QuestionNumber,
                                 QuestionType = quizQuestion.QuestionType,
                                 Question = quizQuestion.Question,
@@ -353,7 +353,6 @@ namespace LXP.Core.Services
         }
     }
 }
-*/
 
 
 

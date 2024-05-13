@@ -60,8 +60,8 @@ namespace LXP.Api.Controllers
         public ActionResult CreateQuiz([FromBody] CreateQuizDto request)
         {
             var quizId = Guid.NewGuid(); // Generate QuizId
-            var courseId = Guid.Parse("a4b8b1d4-0071-479b-9ec1-bf8c0e183bf5"); // Hardcoded CourseId
-            var topicId = Guid.Parse("53073ecf-d089-49cc-b6db-019a48d328ea"); // Hardcoded TopicId
+            var courseId = Guid.Parse("ce753ccb-408c-4d8c-8acd-cbc8c5adcbb8"); // Hardcoded CourseId
+            var topicId = Guid.Parse("e3a895e4-1b3f-45b8-9c0a-98f9c0fa4996"); // Hardcoded TopicId
             var createdBy = "System"; // Set createdBy
             var createdAt = DateTime.UtcNow; // Set createdAt
 

@@ -228,6 +228,8 @@ namespace LXP.Data.Repository
                                 QuizId = q.QuizId,
                                 Question = q.Question,
                                 QuestionType = q.QuestionType,
+                                QuestionNo = q.QuestionNo,
+
                                 Options = _LXPDbContext.QuestionOptions
                                     .Where(o => o.QuizQuestionId == q.QuizQuestionId)
                                     .Select(
