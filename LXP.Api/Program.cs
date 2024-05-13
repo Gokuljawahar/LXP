@@ -30,7 +30,11 @@ builder.Services.AddSwaggerGen();
 
 // Register the IQuizService and QuizService
 builder.Services.AddScoped<IQuizService, QuizService>();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
 // Register the IQuizRepository and QuizRepository
 builder.Services.AddScoped<IQuizRepository, QuizRepository>();
 builder.Services.AddScoped<IQuizQuestionService, QuizQuestionService>();
@@ -57,7 +61,7 @@ if (app.Environment.IsDevelopment())
 app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowFrontend");
 app.UseAuthorization();
 
 app.MapControllers();
