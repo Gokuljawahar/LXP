@@ -1,5 +1,20 @@
 ﻿
 
+//using LXP.Common.DTO;
+//using System;
+//using System.Collections.Generic;
+
+//namespace LXP.Core.IServices
+//{
+//    public interface IQuizQuestionService
+//    {
+//        Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+//        bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
+//        bool DeleteQuestion(Guid quizQuestionId);
+//        List<QuizQuestionNoDto> GetAllQuestions();
+//    }
+//}
+
 using LXP.Common.DTO;
 using System;
 using System.Collections.Generic;
@@ -12,8 +27,11 @@ namespace LXP.Core.IServices
         bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
         bool DeleteQuestion(Guid quizQuestionId);
         List<QuizQuestionNoDto> GetAllQuestions();
+        QuizQuestionNoDto GetQuestionById(Guid quizQuestionId);
     }
 }
+
+
 //using System;
 //using System.Collections.Generic;
 //using System.Linq;

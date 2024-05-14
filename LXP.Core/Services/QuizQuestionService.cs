@@ -1,4 +1,43 @@
 ﻿
+//using LXP.Common.DTO;
+//using LXP.Core.IServices;
+//using LXP.Data.IRepository;
+//using System;
+//using System.Collections.Generic;
+
+//namespace LXP.Core.Services
+//{
+//    public class QuizQuestionService : IQuizQuestionService
+//    {
+//        private readonly IQuizQuestionRepository _quizQuestionRepository;
+
+//        public QuizQuestionService(IQuizQuestionRepository quizQuestionRepository)
+//        {
+//            _quizQuestionRepository = quizQuestionRepository;
+//        }
+
+//        public Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
+//        {
+//            return _quizQuestionRepository.AddQuestion(quizQuestionDto, options);
+//        }
+
+//        public bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options)
+//        {
+//            return _quizQuestionRepository.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
+//        }
+
+
+//        public bool DeleteQuestion(Guid quizQuestionId)
+//        {
+//            return _quizQuestionRepository.DeleteQuestion(quizQuestionId);
+//        }
+
+//        public List<QuizQuestionNoDto> GetAllQuestions()
+//        {
+//            return _quizQuestionRepository.GetAllQuestions();
+//        }
+//    }
+//}
 using LXP.Common.DTO;
 using LXP.Core.IServices;
 using LXP.Data.IRepository;
@@ -26,7 +65,6 @@ namespace LXP.Core.Services
             return _quizQuestionRepository.UpdateQuestion(quizQuestionId, quizQuestionDto, options);
         }
 
-
         public bool DeleteQuestion(Guid quizQuestionId)
         {
             return _quizQuestionRepository.DeleteQuestion(quizQuestionId);
@@ -36,8 +74,14 @@ namespace LXP.Core.Services
         {
             return _quizQuestionRepository.GetAllQuestions();
         }
+
+        public QuizQuestionNoDto GetQuestionById(Guid quizQuestionId)
+        {
+            return _quizQuestionRepository.GetQuestionById(quizQuestionId);
+        }
     }
 }
+
 
 //////////using System;
 //////////using System.Collections.Generic;

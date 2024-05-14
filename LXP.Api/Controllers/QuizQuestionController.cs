@@ -44,6 +44,17 @@ namespace LXP.Api.Controllers
             var result = _quizQuestionService.GetAllQuestions();
             return Ok(result);
         }
+
+        [HttpGet("GetQuestionById")]
+        public IActionResult GetQuestionById(Guid quizQuestionId)
+        {
+            var result = _quizQuestionService.GetQuestionById(quizQuestionId);
+            if (result == null)
+            {
+                return NotFound(); // Return 404 if question with given ID is not found
+            }
+            return Ok(result);
+        }
     }
 }
 ////////using Microsoft.AspNetCore.Http;

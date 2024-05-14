@@ -255,6 +255,45 @@ namespace LXP.Data.Repository
                 );
             }
         }
+        public QuizQuestionNoDto GetQuestionById(Guid quizQuestionId)
+        {
+            try
+            {
+                return _LXPDbContext.QuizQuestions
+                    .Where(q => q.QuizQuestionId == quizQuestionId)
+                    .Select(q =>
+                        new QuizQuestionNoDto
+                        {
+                            QuizId = q.QuizId,
+                            QuizQuestionId = q.QuizQuestionId,
+                            Question = q.Question,
+                            QuestionType = q.QuestionType,
+                            QuestionNo = q.QuestionNo,
+
+                            Options = _LXPDbContext.QuestionOptions
+                                .Where(o => o.QuizQuestionId == q.QuizQuestionId)
+                                .Select(o =>
+                                    new QuestionOptionDto
+                                    {
+                                        Option = o.Option,
+                                        IsCorrect = o.IsCorrect
+                                    }
+                                )
+                                .ToList()
+                        }
+                    )
+                    .FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException(
+                    "An error occurred while retrieving the quiz question by ID.",
+                    ex
+                );
+            }
+        }
+
+
 
 
 
