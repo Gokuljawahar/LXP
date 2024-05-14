@@ -216,6 +216,7 @@ namespace LXP.Data.Repository
             _LXPDbContext.SaveChanges();
         }
 
+        
         public List<QuizQuestionNoDto> GetAllQuestions()
         {
             try
@@ -226,6 +227,7 @@ namespace LXP.Data.Repository
                             new QuizQuestionNoDto
                             {
                                 QuizId = q.QuizId,
+                                QuizQuestionId = q.QuizQuestionId,
                                 Question = q.Question,
                                 QuestionType = q.QuestionType,
                                 QuestionNo = q.QuestionNo,
@@ -253,6 +255,8 @@ namespace LXP.Data.Repository
                 );
             }
         }
+
+
 
         public int GetNextQuestionNo(Guid quizId)
         {
@@ -400,6 +404,44 @@ namespace LXP.Data.Repository
         }
     }
 }
+
+//public List<QuizQuestionNoDto> GetAllQuestions()
+//{
+//    try
+//    {
+//        return _LXPDbContext.QuizQuestions
+//            .Select(
+//                q =>
+//                    new QuizQuestionNoDto
+//                    {
+//                        QuizId = q.QuizId,
+//                        Question = q.Question,
+//                        QuestionType = q.QuestionType,
+//                        QuestionNo = q.QuestionNo,
+
+//                        Options = _LXPDbContext.QuestionOptions
+//                            .Where(o => o.QuizQuestionId == q.QuizQuestionId)
+//                            .Select(
+//                                o =>
+//                                    new QuestionOptionDto
+//                                    {
+//                                        Option = o.Option,
+//                                        IsCorrect = o.IsCorrect
+//                                    }
+//                            )
+//                            .ToList()
+//                    }
+//            )
+//            .ToList();
+//    }
+//    catch (Exception ex)
+//    {
+//        throw new InvalidOperationException(
+//            "An error occurred while retrieving all quiz questions.",
+//            ex
+//        );
+//    }
+//}
 
 //public bool UpdateQuestion(
 //    Guid quizQuestionId,

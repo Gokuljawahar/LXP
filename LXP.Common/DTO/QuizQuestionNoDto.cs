@@ -8,7 +8,7 @@ namespace LXP.Common.DTO
 {
     public class QuizQuestionNoDto
     {
-        // public Guid QuizQuestionId { get; set; } = new Guid();
+        public Guid QuizQuestionId { get; set; } 
         public Guid QuizId { get; set; }
         public int QuestionNo { get; set; }
         public string Question { get; set; } = null!;
