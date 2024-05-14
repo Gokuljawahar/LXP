@@ -65,7 +65,8 @@ namespace LXP.Data.Repository
 
                 var quizQuestionEntity = new QuizQuestion
                 {
-                    QuizId = quizQuestionDto.QuizId,
+                    //QuizId = quizQuestionDto.QuizId,
+                    QuizId = Guid.Parse("4db699e3-6867-47f9-9bf6-841c221038a3"),
                     Question = quizQuestionDto.Question,
                     QuestionType = quizQuestionDto.QuestionType,
                     QuestionNo = GetNextQuestionNo(quizQuestionDto.QuizId),
@@ -119,7 +120,7 @@ namespace LXP.Data.Repository
     Guid quizQuestionId,
     QuizQuestionDto quizQuestionDto,
     List<QuestionOptionDto> options
-)
+         )
         {
             try
             {

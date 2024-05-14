@@ -21,9 +21,6 @@ namespace LXP.Core.Services
             _quizRepository = quizRepository;
         }
 
-
-
-
         public void CreateQuiz(QuizDto quiz)
         {
             _quizRepository.CreateQuiz(quiz);
