@@ -11,7 +11,7 @@ namespace LXP.Common.DTO
     {
        // public Guid QuizQuestionId { get; set; } = new Guid();
         public Guid QuizId { get; set; }
-        public int QuestionNo { get; set; }
+        //public int QuestionNo { get; set; }
         public string Question { get; set; } = null!;
         public string QuestionType { get; set; } = null!;
        // public string CreatedBy { get; set; } = null!;

@@ -10,7 +10,7 @@ namespace LXP.Data.IRepository
         Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
         bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
         bool DeleteQuestion(Guid quizQuestionId);
-        List<QuizQuestionDto> GetAllQuestions();
+        List<QuizQuestionNoDto> GetAllQuestions();
         void DecrementQuestionNos(Guid deletedQuestionId);
         int GetNextQuestionNo(Guid quizId);
         Guid AddQuestionOption(QuestionOptionDto questionOptionDto, Guid quizQuestionId);

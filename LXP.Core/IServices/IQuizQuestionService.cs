@@ -11,7 +11,7 @@ namespace LXP.Core.IServices
         Guid AddQuestion(QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
         bool UpdateQuestion(Guid quizQuestionId, QuizQuestionDto quizQuestionDto, List<QuestionOptionDto> options);
         bool DeleteQuestion(Guid quizQuestionId);
-        List<QuizQuestionDto> GetAllQuestions();
+        List<QuizQuestionNoDto> GetAllQuestions();
     }
 }
 //using System;

@@ -216,14 +216,14 @@ namespace LXP.Data.Repository
             _LXPDbContext.SaveChanges();
         }
 
-        public List<QuizQuestionDto> GetAllQuestions()
+        public List<QuizQuestionNoDto> GetAllQuestions()
         {
             try
             {
                 return _LXPDbContext.QuizQuestions
                     .Select(
                         q =>
-                            new QuizQuestionDto
+                            new QuizQuestionNoDto
                             {
                                 QuizId = q.QuizId,
                                 Question = q.Question,

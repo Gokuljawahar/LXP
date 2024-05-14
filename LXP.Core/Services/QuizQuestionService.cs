@@ -32,7 +32,7 @@ namespace LXP.Core.Services
             return _quizQuestionRepository.DeleteQuestion(quizQuestionId);
         }
 
-        public List<QuizQuestionDto> GetAllQuestions()
+        public List<QuizQuestionNoDto> GetAllQuestions()
         {
             return _quizQuestionRepository.GetAllQuestions();
         }
