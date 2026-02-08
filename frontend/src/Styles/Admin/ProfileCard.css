@@ -1,0 +1,53 @@
+#adminprofile-card #profile-img {
+    text-align: center;
+}
+
+.dash-profile .settings-menu {
+    padding: 30px;
+}
+
+#profile-img img {
+    position: relative;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    border: 5px solid #FFFFFF;
+}
+
+.settings-widget.dash-profile {
+    position: relative;
+    border-radius: 5px;
+}
+
+.profile-name h4 {
+    font-weight: bold;
+}
+
+.settings-widget.dash-profile::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #23375c;
+    border-radius: 5px 4px 0 0;
+}
+
+.profile-group p {
+    text-align: start;
+    font-size: small;
+}
+
+.profile-group p a {
+    text-align: start;
+    font-size: small;
+    text-decoration: none;
+    color: black;
+}
+
+
+.AlterImageCard{
+    height: 50px;
+    width: 50px;
+}

@@ -1,0 +1,136 @@
+#admin_navbar .dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+#admin_navbar .ssss {
+    background: #23275c;
+}
+
+#admin_navbar .top-nav {
+    display: flex;
+    position: fixed;
+    /* justify-content: flex-end; */
+    align-items: center;
+    background-color: #23275c;
+    color: #fff;
+    height: 4rem;
+    width: 100%;
+}
+
+#admin_navbar .top-nav img {
+    width: 12vw;
+    height: 5vh;
+}
+
+#admin_navbar .nav-img {
+    margin-left: 10px;
+    padding: 10px;
+}
+
+#admin_navbar .user-info {
+    position: relative;
+
+    margin-left: auto;
+}
+
+#admin_navbar .side-nav {
+    margin-top: 4rem;
+    /* width: 100%; */
+    /* Collapsed width */
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease;
+    /* Animate width change */
+    overflow: hidden;
+    /* Hide overflowing icons */
+}
+
+#admin_navbar .drawerheader {
+    /* background-color: #f4f6fc; */
+
+}
+
+#admin_navbar .iconDrawer {
+    color: #23275c;
+}
+
+#admin_navbar .side-nav.open {
+    width: 14.4%;
+
+    /* Expanded width */
+}
+
+#admin_navbar .side-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#admin_navbar .side-nav ul li {
+    padding: 15px;
+    color: #23275c;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+
+#admin_navbar .side-nav ul .icon {
+    margin-right: 6px;
+    color: #23275c;
+}
+
+#admin_navbar .side-nav ul li:hover {
+    background-color: #CCCCCC;
+}
+
+.side-nav ul li.active {
+    background-color: #CCCCCC;
+}
+
+
+
+#admin_navbar .submenu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+#admin_navbar .submenu.open {
+    display: block;
+    padding-left: 2vw;
+    font-size: 0.9rem;
+}
+
+#admin_navbar .submenu li {
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+
+}
+
+#admin_navbar .submenu.active {
+    background-color: #8b2222;
+}
+
+#adminNavhead {
+    color:#CCCCCC;
+    font-style: italic;
+    width: "5vw";
+    height: "5vh";
+}
+
+#adminNavhead>h4>span {
+    color:#f0f0f0;
+    font-size: 100%;
+    font-weight: bold;
+}
+#admin_navbar img {
+    max-width: 100%;
+    height: auto;
+}

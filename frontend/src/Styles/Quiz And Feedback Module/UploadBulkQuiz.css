@@ -1,0 +1,25 @@
+#dropzone{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:300px;
+  width:50%;
+  margin-left:25%;
+  margin-top:5%;
+  border:2px dashed #365486;
+  padding:20px;
+}
+
+#heading{
+  color: #365486;
+}
+
+#temp{
+  margin-top:-60%;
+  margin-left:150%;
+ inline-size: 150%;
+}
+
+
+

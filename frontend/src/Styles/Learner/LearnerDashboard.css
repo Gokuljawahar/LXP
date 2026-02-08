@@ -1,0 +1,474 @@
+.dashboard-container {
+  display: flex;
+  padding: 2rem;
+  background-color: #f0f4f8;
+  min-height: calc(100vh - 64px); /* Adjust based on your navbar height */
+}
+ 
+ 
+.dashboard-container {
+  animation: fadeIn 0.5s ease-in-out;
+  height: 100vh; /* Changed from 600px to 100vh */
+  margin-left: 0; /* Removed the 40px left margin */
+}
+ 
+.profile-card {
+  width: 25%;
+   margin-right: 2rem;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   color: white;
+   border-radius: 20px;
+   overflow: hidden;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+   margin-left: 2%;
+   height: auto;
+   border-radius: 20px;
+ }
+ 
+ .profile-card:hover {
+ 
+   transform: translateY(-5px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+ }
+ 
+ .profile-header {
+  padding: 1.5rem;
+  text-align: center;
+   text-align: center;
+   background: rgba(255, 255, 255, 0.1);
+   color: #fff;
+   
+ }
+ 
+ .profile-avatar {
+  width: 100px !important;
+  height: 100px !important;
+  margin: 0 auto 1rem;
+  border: 4px solid white;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .profile-name {
+   font-weight: bold;
+   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .profile-content {
+  padding: 1.5rem;
+  color: #fff;
+   
+ }
+ 
+ .profile-details {
+   background: rgba(255, 255, 255, 0.1);
+   border-radius: 0.5rem;
+  padding: 1.5rem;
+  color: #fff;
+ }
+ 
+ .detail-item {
+   display: flex;
+   align-items: center;
+   margin-bottom: 0.75rem;
+ }
+ 
+ .detail-item svg {
+   margin-right: 0.75rem;
+   font-size: 1.25rem;
+ }
+ 
+ .dashboard-content {
+   flex: 1;
+ }
+ 
+ .course-stats {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 2rem;
+   border-radius: 15px;
+ }
+ 
+ .stat-card {
+  flex: 1;
+  margin: 0 0.5rem;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .stat-card:hover {
+   transform: translateY(-10px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .stat-content {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+ 
+ }
+ 
+ .stat-icon {
+   background-color: rgba(255, 255, 255, 0.2);
+   margin-right: 1rem;
+  padding: 0.75rem;
+  border-radius: 50%;
+ }
+ 
+ .stat-text {
+  color: white;
+  text-align: center;
+ }
+ 
+ .stat-number {
+   font-weight: bold;
+   margin-top: 0.5rem;
+   justify-content: center;
+   text-align: center;
+ }
+ 
+ .stat-wave {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 50%;
+   background: rgba(255, 255, 255, 0.1);
+   border-radius: 1000% 1000% 0 0;
+   animation: wave 8s linear infinite;
+   border-radius: 15px;
+ }
+ 
+ .stat-card.enrolled {
+   background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+   border-radius: 25px;
+ }
+ 
+ .stat-card.inprogress {
+   background: linear-gradient(135deg, #4E65FF 0%, #92EFFD 100%);
+   border-radius: 25px;
+ }
+ 
+ .stat-card.completed {
+   background: linear-gradient(135deg, #3AE374 0%, #93FF93 100%);
+   border-radius: 25px;
+ }
+ 
+ @keyframes wave {
+   0%, 100% {
+     transform: translateY(0) scale(1);
+   }
+   50% {
+     transform: translateY(-10px) scale(1.05);
+   }
+ }
+ 
+ /* Add these animations */
+ @keyframes countUp {
+   from {
+     opacity: 0;
+     transform: translateY(20px);
+   }
+   to {
+     opacity: 1;
+     transform: translateY(0);
+   }
+ }
+ 
+ @keyframes pulse {
+   0% {
+     transform: scale(1);
+   }
+   50% {
+     transform: scale(1.05);
+   }
+   100% {
+     transform: scale(1);
+   }
+ }
+ 
+ .stat-number {
+   animation: countUp 1s ease-out forwards, pulse 2s infinite;
+ }
+ 
+ .stat-icon {
+   animation: pulse 2s infinite;
+ }
+ 
+ /* Add this to your existing CSS */
+ 
+ .dashboard-lower-half {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+ }
+ .ongoing-course-card {
+ 
+   display: flex;
+   margin-bottom: 1rem;
+   border-radius: 0.5rem;
+   overflow: hidden;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .overall-progress {
+   background: linear-gradient(135deg, #abb7ec 0%, #bfa2dd 100%);
+   border-radius: 2rem;
+   padding: 2rem;
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+   color: white;
+   position: relative;
+   overflow: hidden;
+   height: fit-content;
+   transition: all 0.3s ease;
+ }
+ 
+ #Learner_Progress
+ {
+   
+      background: linear-gradient(135deg, #6b759f 0%, #d070bb 100%);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      margin-top: 50px;
+    }
+ 
+ 
+ .overall-progress:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .progress-title {
+   font-size: 1.5rem;
+   font-weight: bold;
+   margin-bottom: 1rem;
+   text-align: center;
+   color: #333;
+ }
+ 
+ .progress-container {
+   position: relative;
+   height: 200px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .circular-progress {
+   width: 150px;
+   height: 150px;
+   border-radius: 50%;
+   background: conic-gradient(
+     from 0deg,
+     #ffffff var(--progress),
+     rgba(255, 255, 255, 0.3) var(--progress)
+   );
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   z-index: 2;
+ }
+ .overall-progress,
+ .score-progress,
+ .ongoing-courses {
+  flex: 1 1 30%;
+  margin: 0.5rem;
+   background: rgb(255, 255, 255);
+   border-radius: 1rem;
+   padding: 1.5rem;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   min-width: 250px;
+ 
+   
+ }
+ 
+ 
+ .inner-circle {
+   width: 130px;
+   height: 130px;
+   background: rgba(255, 255, 255, 0.1);
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .progress-percentage {
+   font-size: 2.5rem;
+   font-weight: bold;
+ }
+ 
+ .wave-container {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+ }
+ 
+ .wave {
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   width: 200%;
+   height: 100%;
+   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23ffffff22'/%3E%3C/svg%3E");
+   animation: wave 10s linear infinite;
+ }
+ 
+ @keyframes wave {
+   0% { transform: translateX(0) translateZ(0) scaleY(1); }
+   50% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
+   100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+ }
+ 
+ @keyframes fillProgress {
+   0% { --progress: 0deg; }
+   100% { --progress: calc(3.6deg * var(--progressValue)); }
+ }
+  /* Add animations */
+  @keyframes fadeIn {
+   from { opacity: 0; }
+   to { opacity: 1; }
+ }
+ 
+ .dashboard-container {
+   animation: fadeIn 0.5s ease-in-out;
+   height: 600px;
+   margin-left: 40px;
+ }
+ 
+ @keyframes slideIn {
+   from { transform: translateY(20px); opacity: 0; }
+   to { transform: translateY(0); opacity: 1; }
+ }
+ 
+ .profile-card,
+ .stat-card,
+ .ongoing-course-card {
+   animation: slideIn 0.5s ease-in-out;
+ }
+ 
+ .ongoing-courses {
+   background: linear-gradient(135deg, #f6f9fc 0%, #e9f1f9 100%);
+   border-radius: 10px;
+   padding: 2rem;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+ 
+ }
+ 
+ .ongoing-courses h6 {
+   font-size: 1rem;
+   color: #333;
+   /* margin-bottom: 1.5rem; */
+   text-align: center;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+ 
+ }
+ 
+ .ongoing-course-card {
+   display: flex;
+   background: white;
+   margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+   transition: all 0.3s ease;
+   /* margin-bottom: 1.5rem; */
+   animation: slideIn 0.5s ease-out;
+ }
+ 
+ @keyframes slideIn {
+   from {
+     opacity: 0;
+     transform: translateX(-20px);
+   }
+   to {
+     opacity: 1;
+     transform: translateX(0);
+   }
+ }
+ 
+ .ongoing-course-card:hover {
+   transform: translateY(-5px) scale(1.02);
+   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+ }
+ 
+ .dashboard-course-thumbnail {
+   /* background-color: #3AE374; */
+   width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 15px 0 0 15px;
+ }
+ 
+ .ongoing-course-card:hover .dashboard-course-thumbnail {
+   transform: scale(1.1);
+ }
+ 
+ .ongoing-course-content {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ }
+ 
+ .ongoing-course-content Typography {
+   margin-bottom: 0.5rem;
+ }
+ 
+ .ongoing-course-content Typography:first-child {
+   font-weight: bold;
+   color: #333;
+   font-size: 0.5rem;
+ }
+ 
+ .ongoing-course-content Typography:nth-child(2) {
+   font-size: 0.5rem;
+   font-weight: bold;
+   color: #4CAF50;
+ }
+ 
+ .progress-bar {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+ }
+ 
+ .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4CAF50, #8BC34A);
+  border-radius: 4px;
+  transition: width 0.8s ease-in-out;
+ }
+ 
+ @keyframes pulse {
+   0% {
+     opacity: 0.6;
+   }
+   50% {
+     opacity: 1;
+   }
+   100% {
+     opacity: 0.6;
+   }
+ }
+ 

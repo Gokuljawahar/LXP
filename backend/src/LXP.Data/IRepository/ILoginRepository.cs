@@ -1,0 +1,22 @@
+namespace LXP.Data.IRepository;
+
+using LXP.Common.Entities;
+
+public interface ILoginRepository
+{
+    public Task LoginLearner(Learner loginmodel);
+
+    public Task<bool> AnyUserByEmail(string loginmodel);
+
+    public Task<bool> AnyLearnerByEmailAndPassword(string Email, string Password);
+
+    public Task<Learner> GetLearnerByEmail(string Email);
+
+    public Task UpdateLearnerPassword(string Email, string Password);
+    public Task UpdateLearnerLastLogin(string Email);
+
+    //public  Task UpdatePassword(Learner learner);
+
+
+    //public Task<Learner> LearnerByEmailAndPassword(string Email, string Password);
+}

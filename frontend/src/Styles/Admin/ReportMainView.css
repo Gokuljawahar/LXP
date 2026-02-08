@@ -1,0 +1,107 @@
+/* #Report-Page-Title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-large;
+    font-weight: 800;
+}
+
+#Report-page-description {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-report-page-description {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+    border-radius: 10px;
+    align-items: center;
+    padding: 25px;
+    height: 100%;
+    max-height: 300px;
+    width: 100%;
+} */
+
+/* CSS Styling */
+#Report-Page-Title {
+    text-align: center;
+    font-size: x-large;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+#Report-page-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-report-page-description {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    align-items: center;
+    padding: 25px;
+    height: 100%;
+    width: 100%;
+}
+
+.row-card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 10px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .row-card {
+        flex-basis: 100%;
+    }
+}
+
+@media (min-width: 769px) {
+    .div-report-page-description {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .row-card {
+        flex-basis: calc(50% - 20px);
+        /* Two cards per row with spacing */
+    }
+}
+
+@media (min-width: 1024px) {
+    .row-card {
+        /* flex-basis: calc(33.333% - 20px); */
+        /* Three cards per row with spacing */
+
+        flex-basis: calc(25% - 20px);
+
+
+          /* Four cards per row with spacing */
+    }
+}
+
+
+@media (max-width: 768px) {
+    #marquee-container {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        animation: scrollText 30s linear infinite;
+
+
+    }
+}
+

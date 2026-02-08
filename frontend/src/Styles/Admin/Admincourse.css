@@ -1,0 +1,64 @@
+/* .sidebar
+{
+    background-color: #272356;
+} */
+
+#admin_recentcourse .landingcoursepage {
+    /* background-color:rgb(248, 242, 242);  */
+    /* padding-left: 200px;
+    padding-right: 200px; */
+    /* display: flex;
+    flex-wrap: wrap;   */
+    padding-left: 50px;
+    padding-right: 50px;
+
+}
+
+#admin_recentcourse .scrollable-content {
+    display: flex;
+    flex-direction: row;
+    
+    row-gap: 30px;
+    justify-content: space-evenly;
+    column-gap: 60px;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+#admin_recentcourse  {
+    height: 100vh;
+    height: auto;
+    width: 100%vw;
+}
+
+#admin_recentcourse .spinnerclass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+}
+
+.recentaddedcourse {
+    background-color: #f0f0f0;
+    /* Replace with the color you prefer */
+
+    /* background-color: #d2d2d2; */
+    /* border: 1px solid #85d3f7; */
+    border-radius: 15px;
+    /* border: 2px solid black; */
+    margin-top: 15px;
+}
+
+.updatecourse-toast {
+    margin-top: 80px;
+    box-shadow: 0 0 10px #000;
+    color: white;
+    background-color: #5e55df;
+}
+
+.deletecourse-toast {
+    margin-top: 80px;
+    box-shadow: 0 0 10px #000;
+    color: white;
+    background-color: #5e55df;
+}
