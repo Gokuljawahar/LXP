@@ -61,13 +61,8 @@ public class CourseRepository(
         await this._lXPDbContext.SaveChangesAsync();
     }
 
-    // public IEnumerable<CourseDetailsViewModel> GetAllCourse()
-    // {
     //     // Get the course ratings
-    //     var courseRatings = this.GetCourseRating().ToDictionary(cr => cr.CourseId);
-    //     return this._lXPDbContext
     //         .Courses.Select(c => new CourseDetailsViewModel
-    //         {
     //             CourseId = c.CourseId,
     //             Status = c.IsAvailable,
     //             Title = c.Title,
@@ -88,9 +83,7 @@ public class CourseRepository(
     //             ModifiedAt = c.ModifiedAt.ToString(),
     //             AverageRating = courseRatings.TryGetValue(c.CourseId, out var value) ? value.Rating
     //                 : 0
-    //         })
     //         .ToList();
-    // }
     public IEnumerable<CourseDetailsViewModel> GetAllCourse()
     {
         // Get the course ratings
@@ -124,13 +117,8 @@ public class CourseRepository(
             .ToList();
     }
 
-    // public IEnumerable<CourseDetailsViewModel> GetLimitedCourse()
-    // {
-    //     var courseRating = this.GetCourseRating().ToDictionary(cr => cr.CourseId);
-    //     return this._lXPDbContext
     //         .Courses.OrderByDescending(c => c.CreatedAt)
     //         .Select(c => new CourseDetailsViewModel
-    //         {
     //             CourseId = c.CourseId,
     //             Title = c.Title,
     //             Level = c.Level.Level,
@@ -146,10 +134,8 @@ public class CourseRepository(
     //             CreatedAt = c.CreatedAt,
     //             AverageRating = courseRating.TryGetValue(c.CourseId, out var value) ? value.Rating
     //                 : 0
-    //         })
     //         .Take(9)
     //         .ToList();
-    // }
 
     public IEnumerable<CourseDetailsViewModel> GetLimitedCourse()
     {

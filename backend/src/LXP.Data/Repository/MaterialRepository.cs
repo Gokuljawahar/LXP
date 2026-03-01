@@ -66,9 +66,5 @@ public class MaterialRepository(LXPDbContext lXPDbContext) : IMaterialRepository
         return await this._lXPDbContext.SaveChangesAsync();
     }
 
-    //public async Task<Material> GetmeterialDurationByMaterialId(Guid materialId)
-    //{
-    //    return await _lXPDbContext.Materials.Where(material =>
     //         material.MaterialId == materialId);
-    //}
 }

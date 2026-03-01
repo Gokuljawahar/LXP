@@ -41,13 +41,6 @@ public class DashboardController(IDashboardService dashboardService) : BaseContr
     ///</summary>
     ///<response code="200">Success</response>
     ///<response code="500">Internal server Error</response>
-    //[HttpGet]
-    //public ActionResult GetMostEnrolledCourse()
-    //{
-    //    var total_course_created = _dashboardService.GetMostEnrolledCourse();
-    //    return Ok(CreateSuccessResponse(total_course_created));
-    //}
-
 
 
     [HttpGet("/lxp/admin/DashboardDetails")]

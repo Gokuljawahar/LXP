@@ -20,9 +20,7 @@ public class TopicFeedbackRepository(LXPDbContext dbContext) : ITopicFeedbackRep
         this._dbContext.SaveChanges();
     }
 
-    //     public List<TopicFeedbackQuestionNoViewModel> GetAllFeedbackQuestions() => this._dbContext
     //             .TopicFeedbackQuestions.Select(q => new TopicFeedbackQuestionNoViewModel
-    //             {
     //                 TopicFeedbackQuestionId = q.TopicFeedbackQuestionId,
     //                 TopicId = q.TopicId,
     //                 QuestionNo = q.QuestionNo,
@@ -36,12 +34,9 @@ public class TopicFeedbackRepository(LXPDbContext dbContext) : ITopicFeedbackRep
     //                                             o.TopicFeedbackQuestionId == q.TopicFeedbackQuestionId
     //                                         )
     //                                         .Select(o => new TopicFeedbackQuestionsOptionViewModel
-    //                                         {
     //                                             OptionText = o.OptionText
-    //                                         })
     // ,
     //                 ]
-    //             })
     //             .ToList();
     public List<TopicFeedbackQuestionNoViewModel> GetAllFeedbackQuestions()
     {
@@ -80,10 +75,8 @@ public class TopicFeedbackRepository(LXPDbContext dbContext) : ITopicFeedbackRep
         return result;
     }
 
-    //     public List<TopicFeedbackQuestionNoViewModel> GetFeedbackQuestionsByTopicId(Guid topicId) => this._dbContext
     //             .TopicFeedbackQuestions.Where(q => q.TopicId == topicId)
     //             .Select(q => new TopicFeedbackQuestionNoViewModel
-    //             {
     //                 TopicFeedbackQuestionId = q.TopicFeedbackQuestionId,
     //                 TopicId = q.TopicId,
     //                 QuestionNo = q.QuestionNo,
@@ -97,12 +90,9 @@ public class TopicFeedbackRepository(LXPDbContext dbContext) : ITopicFeedbackRep
     //                                             o.TopicFeedbackQuestionId == q.TopicFeedbackQuestionId
     //                                         )
     //                                         .Select(o => new TopicFeedbackQuestionsOptionViewModel
-    //                                         {
     //                                             OptionText = o.OptionText
-    //                                         })
     // ,
     //                 ]
-    //             })
     //             .ToList();
     public List<TopicFeedbackQuestionNoViewModel> GetFeedbackQuestionsByTopicId(Guid topicId)
     {

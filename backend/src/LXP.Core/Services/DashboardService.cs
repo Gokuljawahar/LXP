@@ -51,7 +51,6 @@ public class DashboardService(IDashboardRepository dashboardRepository) : IDashb
             from c in list
             group c by c.CreatedAt.Year into g
             select new { CreatedYear = g.Key, CourseCount = g.Count() };
-        Console.WriteLine(query);
         var output = query.ToList();
         return output.ToArray();
     }
@@ -63,10 +62,6 @@ public class DashboardService(IDashboardRepository dashboardRepository) : IDashb
     }
 
     //IEnumerable<DashboardEnrollmentViewModel> IDashboardService.GetEnrollments()
-    //{
-    //    var result = _dashboardRepository.GetTotalEnrollments();
-    //    return result;
-    //}
 
 
     public AdminDashboardViewModel GetAdminDashboardDetails()

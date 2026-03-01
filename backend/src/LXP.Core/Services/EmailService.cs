@@ -35,7 +35,6 @@ public class EmailService(IOptions<EmailSettings> emailSettings) : IEmailService
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error sending email: {e.Message}");
             return false;
         }
     }

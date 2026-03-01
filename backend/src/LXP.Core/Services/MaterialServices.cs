@@ -223,16 +223,8 @@ public class MaterialServices : IMaterialServices
             return false;
         }
 
-        //if (existingMaterial.MaterialType.MaterialTypeId != Guid.Parse(material.MaterialId))
-        //{
         //    MaterialType materialType = _materialTypeRepository.GetMaterialTypeByMaterialTypeId(Guid.Parse(material.MaterialId));
         //    existingMaterial.MaterialType = materialType;
-        //}
-        //}
-
-
-
-
 
 
         //existingMaterial.ModifiedAt = DateTime.Now;

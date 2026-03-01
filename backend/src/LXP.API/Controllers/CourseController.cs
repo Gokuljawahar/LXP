@@ -46,16 +46,6 @@ public class CourseController(ICourseServices courseServices) : BaseController
     /////</summary>
     /////<response code="200">Success</response>
     /////<response code="404">Internal server Error</response>
-    //[HttpGet("get/course/{courseId}")]
-    //public ActionResult<Course> GetById(Guid courseId)
-    //{
-    //    var course = _courseServices.GetCourseByCourseId(courseId);
-    //    if(course == null)
-    //    {
-    //        return Ok(CreateFailureResponse(MessageConstants.MsgGetbyid,(int)HttpStatusCode.NotFound));
-    //    }
-    //    return Ok(CreateSuccessResponse(course));
-    //}
 
     ///<summary>
     ///Update the course
@@ -150,23 +140,6 @@ public class CourseController(ICourseServices courseServices) : BaseController
         return this.Ok(this.CreateSuccessResponse(course));
     }
 
-    // [HttpGet("/lxp/view/CourseRating")]
-
-    // public IActionResult GetCourseRating()
-    // {
-    //     var courserating=_courseServices.GetCourseRating();
-
-    //     return Ok(CreateSuccessResponse(courserating));
-    // }
-
-    // [HttpGet("/lxp/view/TopicRating")]
-
-    // public IActionResult GetTopicRating()
-    // {
-    //     var topicrating =_courseServices.GetTopicRating();
-
-    //     return Ok(CreateSuccessResponse(topicrating));
-    // }
 
     [HttpGet("/lxp/view/Getallcoursebylearnerid/{learnerId}")]
     public async Task<IActionResult> GetAllCourseDetailsByLearnerId(string learnerId)

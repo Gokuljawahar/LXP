@@ -103,9 +103,7 @@ public class QuizQuestionRepository(LXPDbContext dbContext) : IQuizQuestionRepos
         return true;
     }
 
-    //     public async Task<List<QuizQuestionNoViewModel>> GetAllQuestionsAsync() => await this._LXPDbContext
     //             .QuizQuestions.Select(q => new QuizQuestionNoViewModel
-    //             {
     //                 QuizId = q.QuizId,
     //                 QuizQuestionId = q.QuizQuestionId,
     //                 Question = q.Question,
@@ -117,13 +115,10 @@ public class QuizQuestionRepository(LXPDbContext dbContext) : IQuizQuestionRepos
     //                     .. this._LXPDbContext
     //                                         .QuestionOptions.Where(o => o.QuizQuestionId == q.QuizQuestionId)
     //                                         .Select(o => new QuestionOptionViewModel
-    //                                         {
     //                                             Option = o.Option,
     //                                             IsCorrect = o.IsCorrect
-    //                                         })
     // ,
     //                 ]
-    //             })
     //             .ToListAsync();
     public async Task<List<QuizQuestionNoViewModel>> GetAllQuestionsAsync()
     {
@@ -161,10 +156,8 @@ public class QuizQuestionRepository(LXPDbContext dbContext) : IQuizQuestionRepos
         return result;
     }
 
-    //     public async Task<List<QuizQuestionNoViewModel>> GetAllQuestionsByQuizIdAsync(Guid quizId) => await this._LXPDbContext
     //             .QuizQuestions.Where(q => q.QuizId == quizId)
     //             .Select(q => new QuizQuestionNoViewModel
-    //             {
     //                 QuizId = q.QuizId,
     //                 QuizQuestionId = q.QuizQuestionId,
     //                 Question = q.Question,
@@ -176,13 +169,10 @@ public class QuizQuestionRepository(LXPDbContext dbContext) : IQuizQuestionRepos
     //                     .. this._LXPDbContext
     //                                         .QuestionOptions.Where(o => o.QuizQuestionId == q.QuizQuestionId)
     //                                         .Select(o => new QuestionOptionViewModel
-    //                                         {
     //                                             Option = o.Option,
     //                                             IsCorrect = o.IsCorrect
-    //                                         })
     // ,
     //                 ]
-    //             })
     //             .ToListAsync();
     public async Task<List<QuizQuestionNoViewModel>> GetAllQuestionsByQuizIdAsync(Guid quizId)
     {

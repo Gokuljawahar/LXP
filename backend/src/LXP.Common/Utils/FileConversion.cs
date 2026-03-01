@@ -59,6 +59,5 @@ public static class FileConversion
         }
         var relativePath = fullFilePath.Replace(webRootPath, "").Replace("\\", "/");
         return $"{contextAccessor.HttpContext.Request.Scheme}://{contextAccessor.HttpContext.Request.Host}{contextAccessor.HttpContext.Request.PathBase}/wwwroot{relativePath}";
-        //return fullFilePath.Split(".")[1];
     }
 }

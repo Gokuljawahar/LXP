@@ -94,12 +94,6 @@ public class QuizQuestionsController(IQuizQuestionService quizQuestionService) :
     ///</summary>
     ///<response code="200">List of all quiz questions.</response>
     ///<response code="500">Internal server error.</response>
-    //[HttpGet("GetAllQuestions")]
-    //public IActionResult GetAllQuestions()
-    //{
-    //    var result = _quizQuestionService.GetAllQuestionsAsync();
-    //    return Ok(CreateSuccessResponse(result));
-    //}
     [HttpGet("GetAllQuestions")]
     public async Task<IActionResult> GetAllQuestions()
     {

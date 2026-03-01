@@ -76,14 +76,12 @@ public class LearnerAttemptRepository(LXPDbContext dbcontext) : ILearnerAttemptR
         return result;
     }
 }
-//var result = from attempt in _dbcontext.LearnerAttempts
 //             join quiz in _dbcontext.Quizzes on attempt.QuizId equals quiz.QuizId
 //             join topic in _dbcontext.Topics on quiz.TopicId equals topic.TopicId
 //             join course in _dbcontext.Courses on topic.CourseId equals course.CourseId
 //             where attempt.LearnerId == LearnerId &&
 //                   topic.TopicId == topicId
 //             select new
-//             {
 //                 Score=attempt.Score,
 //                 CourseTitle=course.Title,
 //                 LearnerId=attempt.LearnerId,
@@ -93,10 +91,7 @@ public class LearnerAttemptRepository(LXPDbContext dbcontext) : ILearnerAttemptR
 //                 PassMark = quiz.PassMark,
 //                 Createdat=quiz.CreatedAt
 
-//             };
 
-
-// var result =
 //     from attempt in _dbcontext.LearnerAttempts
 
 //     join quiz in _dbcontext.Quizzes on attempt.QuizId equals quiz.QuizId
@@ -108,7 +103,6 @@ public class LearnerAttemptRepository(LXPDbContext dbcontext) : ILearnerAttemptR
 //     where attempt.LearnerId == LearnerId
 
 //     group attempt.Score by new
-//     {
 //         quiz.QuizId,
 
 //         CourseName = course.Title,
@@ -121,10 +115,8 @@ public class LearnerAttemptRepository(LXPDbContext dbcontext) : ILearnerAttemptR
 
 //         course.CourseId,
 //         quiz.PassMark
-//     } into grouped
 
 //     select new
-//     {
 //         Score = grouped.Sum(),
 
 //         grouped.Key.QuizId,
@@ -139,6 +131,4 @@ public class LearnerAttemptRepository(LXPDbContext dbcontext) : ILearnerAttemptR
 
 //         grouped.Key.CourseId,
 //         grouped.Key.PassMark
-//     };
 
-// return result;

@@ -165,41 +165,25 @@ public class LearnerService : ILearnerService
 //using Microsoft.EntityFrameworkCore;
 
 //namespace LXP.Core.Services
-//{
-//    public class LearnerService : ILearnerService
-//    {
-//        private readonly ILearnerRepository _learnerRepository;
-//        private readonly IProfileRepository _profileRepository;
-//        private readonly IProfilePasswordHistoryRepository _profilePasswordHistoryRepository;
 
 //        // private readonly IPasswordHistoryRepository _passwordHistoryRepository;
-//        private Mapper _learnerMapper; //Mapper1
 
-//        public LearnerService(
 //            ILearnerRepository learnerRepository,
 //            IProfileRepository profileRepository,
 //            IProfilePasswordHistoryRepository profilePasswordHistoryRepository
 //        )
-//        {
 //            this._learnerRepository = learnerRepository;
 //            this._profileRepository = profileRepository;
 //            this._profilePasswordHistoryRepository = profilePasswordHistoryRepository;
-//            var _configCategory = new MapperConfiguration(cfg =>
 //                cfg.CreateMap<Learner, GetLearnerViewModel>().ReverseMap()
 //            ); //mapper 2
 //            _learnerMapper = new Mapper(_configCategory); // mapper 3
 //            _profilePasswordHistoryRepository = profilePasswordHistoryRepository;
-//        }
 
-//        public async Task<bool> LearnerRegistration(RegisterUserViewModel registerUserViewModel)
-//        {
 //            bool isLearnerExists = await _learnerRepository.AnyLearnerByEmail(
 //                registerUserViewModel.email
 //            );
-//            if (!isLearnerExists)
-//            {
 //                Learner newlearner = new Learner()
-//                {
 //                    LearnerId = Guid.NewGuid(),
 //                    Email = registerUserViewModel.email,
 //                    Password = SHA256Encrypt.ComputePasswordToSha256Hash(
@@ -215,11 +199,9 @@ public class LearnerService : ILearnerService
 //                    ModifiedAt = DateTime.Now,
 //                    ModifiedBy =
 //                        $"{registerUserViewModel.firstName} {registerUserViewModel.lastName}"
-//                };
 //                _learnerRepository.AddLearner(newlearner);
 //                Learner learner = _learnerRepository.GetLearnerByLearnerEmail(newlearner.Email);
 //                LearnerProfile profile = new LearnerProfile()
-//                {
 //                    ProfileId = Guid.NewGuid(),
 //                    FirstName = registerUserViewModel.firstName,
 //                    LastName = registerUserViewModel.lastName,
@@ -233,10 +215,8 @@ public class LearnerService : ILearnerService
 //                    LearnerId = learner.LearnerId,
 //                    ModifiedBy =
 //                        $"{registerUserViewModel.firstName} {registerUserViewModel.lastName}",
-//                };
 
 //                PasswordHistory passwordHistory = new PasswordHistory()
-//                {
 //                    PasswordId = Guid.NewGuid(),
 
 //                    LearnerId = learner.LearnerId,
@@ -252,26 +232,15 @@ public class LearnerService : ILearnerService
 
 //                    ModifiedBy =
 //                        $"{registerUserViewModel.firstName} {registerUserViewModel.lastName}"
-//                };
 
 //                _profilePasswordHistoryRepository.AddPasswordHistory1(passwordHistory);
 //                _profileRepository.AddProfile(profile);
-//                return true;
-//            }
 //            else
-//            {
-//                return false;
-//            }
-//        }
 
-//        public async Task<List<GetLearnerViewModel>> GetAllLearner()
-//        {
 //            List<GetLearnerViewModel> learner = _learnerMapper.Map<
 //                List<Learner>,
 //                List<GetLearnerViewModel>
 //            >(await _learnerRepository.GetAllLearner()); //mapper 4
-//            return learner;
-//        }
 
 //        //public void UpdateAllLearner(Learner learner)
 //        //{
@@ -284,19 +253,6 @@ public class LearnerService : ILearnerService
 //        //}
 
 
-//        public Learner GetLearnerById(string id)
-//        {
-//            return _learnerRepository.GetLearnerDetailsByLearnerId(Guid.Parse(id));
-//        }
-
-//        public async Task<LearnerAndProfileViewModel> LearnerGetLearnerById(string id)
-//        {
-//            var learnerId = Guid.Parse(id);
-//            var learner = _learnerRepository.GetLearnerDetailsByLearnerId(learnerId);
-//            var profile = await _profileRepository.GetProfileByLearnerId(learnerId);
-
-//            var result = new LearnerAndProfileViewModel
-//            {
 //                Email = learner.Email,
 //                Role = learner.Role,
 
@@ -306,9 +262,4 @@ public class LearnerService : ILearnerService
 //                Gender = profile.Gender,
 //                ContactNumber = profile.ContactNumber,
 //                Stream = profile.Stream,
-//            };
 
-//            return result;
-//        }
-//    }
-//}

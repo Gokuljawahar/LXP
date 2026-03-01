@@ -50,18 +50,7 @@ public class LoginRepository(LXPDbContext dbcontext) : ILoginRepository
         }
     }
 
-    //public async Task UpdatePassword(Learner learner)
-    //{
     //    _dbcontext.Learners.Update(learner);
 
-    //    await _dbcontext.SaveChangesAsync();
-    //}
 
-
-
-    //public async Task<Learner> LearnerByEmailAndPassword(string Email, string Password)
-
-    //{
-    //    return await _dbcontext.Learners.FirstOrDefaultAsync(learner => learner.Email == Email && learner.Password == Password);
-    //}
 }
