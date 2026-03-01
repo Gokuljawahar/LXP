@@ -67,7 +67,7 @@
 // import Certificate from "../../components/LearnerComponent/Certificate";
 // import LearnerCourseLandingPage from '../.././components/LearnerComponent/LearnerCourseLandingPage';
  
-// import CourseFeedback from "../../components/Course/Course/CourseFeedback";
+// import { CourseFeedback } from "../../features/course";
 // function Routing() {
 //   return (
 //     <BrowserRouter>
@@ -166,15 +166,15 @@
 //           <Route path="/quizfeedback" element={<QuizFeedback />} />
 //           <Route path="/upload" element={<UploadBulkQuiz />} />
 //           {/* course module */}
-//           <Route path="/addcourse" element={<AddCourseView />} />
+//           <Route path="/addcourse" element={<AddCoursePage />} />
 //           {/* mano changes */}
-//           <Route path="/coursecontent/:id" element={<CourseContent />} />/
+//           <Route path="/coursecontent/:id" element={<CourseContentPage />} />/
 //           {/* stop mano changes */}
-//           <Route path="/addtopic/:id" element={<Topics />} />
+//           <Route path="/addtopic/:id" element={<TopicsPage />} />
 //           <Route path="/savedtopics/:id" element={<SavedTopics />} />
 //           <Route
 //             path="/:courseName/:topicName/addcontent/:id"
-//             element={<AddMaterial />}
+//             element={<AddMaterialPage />}
 //           />
 //         </Route>
 //         {/* quiz learnermodule */}
@@ -192,13 +192,13 @@
 //           element={<FetchQuizFeedbackQuestion />}
 //         />
 //         {/* course team */}
-//         <Route path="/addcourse" element={<AddCourseView />} />
+//         <Route path="/addcourse" element={<AddCoursePage />} />
 //         {/* mano changes */}
-//         <Route path="/coursecontent/:id" element={<CourseContent />} />
+//         <Route path="/coursecontent/:id" element={<CourseContentPage />} />
 //         {/* stop mano changes */}
-//         <Route path="/addtopic/:id" element={<Topics />} />
+//         <Route path="/addtopic/:id" element={<TopicsPage />} />
 //         <Route path="/savedtopics/:id" element={<SavedTopics />} />
-//         {/* <Route path='/addcontent/:id' element={<AddMaterial />} /> */}
+//         {/* <Route path='/addcontent/:id' element={<AddMaterialPage />} /> */}
 //       </Routes>
 //     </BrowserRouter>
 //   );
@@ -263,18 +263,14 @@ import FetchQuizFeedbackQuestion from "../../components/Quiz And Feedback Module
 
 // course team
 
-import { AddCourseView } from "../../View/Course/Course/AddCourseView";
-import { CourseContent } from "../../View/Course/Course/CourseContentView";
-import Topics from "../../View/Course/Topic/Topics";
-import SavedTopics from "../../components/Course/Topic/SavedTopics";
-import AddMaterial from "../../View/Course/Material/AddMaterial";
+import { AddCoursePage, CourseContentPage, TopicsPage, AddMaterialPage, SavedTopics } from '../../features/course';
 import CourseNavbar from "../../components/LearnerComponent/CourseNavbar";
 import TopicScore from "../../components/LearnerComponent/TopicScore";
 import CompletedCourses from "../../components/LearnerComponent/CompletedCourses";
 import Certificate from "../../components/LearnerComponent/Certificate";
 import LearnerCourseLandingPage from '../.././components/LearnerComponent/LearnerCourseLandingPage';
  
-import CourseFeedback from "../../components/Course/Course/CourseFeedback";
+import { CourseFeedback } from "../../features/course";
 import { FetchCourseFeedbackQuestionApi } from "../../middleware/Quiz And Feedback Module/Learner/FetchCourseFeedbackQuestionApi";
 import FetchCourseFeedbackQuestion from "../../components/Quiz And Feedback Module/QuizComponents/Learner/FetchCourseFeedbackQuestion";
 function Routing() {
@@ -375,15 +371,15 @@ function Routing() {
           <Route path="/quizfeedback" element={<QuizFeedback />} />
           <Route path="/upload" element={<UploadBulkQuiz />} />
           {/* course module */}
-          <Route path="/addcourse" element={<AddCourseView />} />
+          <Route path="/addcourse" element={<AddCoursePage />} />
           {/* mano changes */}
-          <Route path="/coursecontent/:id" element={<CourseContent />} />/
+          <Route path="/coursecontent/:id" element={<CourseContentPage />} />/
           {/* stop mano changes */}
-          <Route path="/addtopic/:id" element={<Topics />} />
+          <Route path="/addtopic/:id" element={<TopicsPage />} />
           <Route path="/savedtopics/:id" element={<SavedTopics />} />
           <Route
             path="/:courseName/:topicName/addcontent/:id"
-            element={<AddMaterial />}
+            element={<AddMaterialPage />}
           />
         </Route>
         {/* quiz learnermodule */}
@@ -405,13 +401,13 @@ function Routing() {
           element={<FetchCourseFeedbackQuestion />}
         />
         {/* course team */}
-        <Route path="/addcourse" element={<AddCourseView />} />
+        <Route path="/addcourse" element={<AddCoursePage />} />
         {/* mano changes */}
-        <Route path="/coursecontent/:id" element={<CourseContent />} />
+        <Route path="/coursecontent/:id" element={<CourseContentPage />} />
         {/* stop mano changes */}
-        <Route path="/addtopic/:id" element={<Topics />} />
+        <Route path="/addtopic/:id" element={<TopicsPage />} />
         <Route path="/savedtopics/:id" element={<SavedTopics />} />
-        {/* <Route path='/addcontent/:id' element={<AddMaterial />} /> */}
+        {/* <Route path='/addcontent/:id' element={<AddMaterialPage />} /> */}
       </Routes>
     </BrowserRouter>
   );

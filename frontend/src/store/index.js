@@ -147,61 +147,48 @@ import { FetchQuizFeedbackQuestionApi } from '../middleware/Quiz And Feedback Mo
 
 
 // COURSE TEAMS 
-
-import DeleteCourseFeedbackApi from "../middleware/Course/Course/DeleteCourseFeedbackApi";
-import UpdateCourseFeedbackApi from "../middleware/Course/Course/UpdateCourseFeedbackApi";
-import DeleteCourseFeedbackReducer from "../reducers/Course/Course/DeleteCourseFeedbackReducer";
-
-import UpdateCourseFeedbackReducer from "../reducers/Course/Course/UpdateCourseFeedbackReducer";
-// import fetchTopicsReducer from '../../reducer/Course/CTopic/FetchTopicReducer';
-import fetchTopicsReducer from '../reducers/Course/Topic/FetchTopicReducer'
-
-import fetchTopicsApi from '../middleware/Course/Topic/FetchTopicMiddleware';
-// import fetchEditTopicsApi from '../../middleware/Course/Topic/FetchEditTopicMiddleware';
-import fetchEditTopicsApi from '../middleware/Course/Topic/FetchEditTopicMiddleware'
-
-// import fetchEditTopicsReducer from '../reducers/Course/Topic/FetchEditTopicsReducer';
-
-import fetchEditTopicsReducer from '../reducers/Course/Topic/FetchEditTopicsReducer'
-// import updateTopicReducer from '../reducers/Course/Topic/UpdateTopicsReducer'
-import updateTopicReducer from '../reducers/Course/Topic/UpdateTopicsReducer';
-
-import updateTopicsApi from '../middleware/Course/Topic/UpdateTopicsMiddleware';
-
-// import deleteTopicReducer from '../reducers/Course/Topic/DeleteTopicsReducer';
-import deleteTopicReducer from '../reducers/Course/Topic/DeleteTopicsReducer'
-
-import deleteTopic from '../middleware/Course/Topic/DeleteTopicMiddleware';
-import addContent from '../middleware/Course/Material/AddContentMiddleware';
-
-import AddMaterialReducer from '../reducers/Course/Material/AddContentReducer';
-
-
-import fetchMaterialTypeReducer from '../reducers/Course/Material/FetchMaterialTypeReducer';
-import fetchMaterialTypeApi from '../middleware/Course/Material/FetchMaterialTypeMiddleware';
-
-import fetchContentApi from '../middleware/Course/Material/FetchContentMiddleware';
-import fetchContentReducer from '../reducers/Course/Material/FetchContentReducer';
-import deleteContentReducer from '../reducers/Course/Material/DeleteContentReducer';
-import deleteContentApi from '../middleware/Course/Material/DeleteContentMiddleware';
-import fetchIndividualContentReducer from '../reducers/Course/Material/FetchIndividualContentByIdReducer';
-import fetchIndividualContentApi from '../middleware/Course/Material/FetchIndividualContentByIdMiddleware';
-import updateContentReducer from '../reducers/Course/Material/UpdateContentReducer';
-import updateContentApi from '../middleware/Course/Material/UpdateContentMiddleware';
-import fetchContentUrlReducer from '../reducers/Course/Material/FetchContentUrlReducer';
-import fetchContentUrlApi from '../middleware/Course/Material/FetchContentUrlMiddleware';
-import addCourse from '../middleware/Course/Course/AddCourse';
-import fetchcategoryApi from '../middleware/Course/Category/FetchCategoryMiddleware';
-import fetchlevelApi from '../middleware/Course/Level/FetchLevelMiddleware';
-import fetchCategoryReducer from '../reducers/Course/Category/FetchCategoryReducer';
-import fetchLevelReducer from '../reducers/Course/Level/FetchLevelReducer';
-import categoryReducer from '../reducers/Course/Category/AddCategoryReducer';
-import addCategory from '../middleware/Course/Category/AddCategoryMiddleware';
-import fetchCourseReducer from '../reducers/Course/Course/FetchCourseDetailReducer';
-import fetchcourseApi from '../middleware/Course/Course/FetchCourseDetailMiddleware';
-import addTopicReducer from '../reducers/Course/Topic/AddTopicReducer';
-import addTopic from '../middleware/Course/Topic/AddTopicMiddleware';
-import AddCourseReducer from '../reducers/Course/Course/AddCourseReducer';
+import {
+  deleteCourseFeedbackApi as DeleteCourseFeedbackApi,
+  updateCourseFeedbackApi as UpdateCourseFeedbackApi,
+  fetchTopicsApi,
+  fetchEditTopicsApi,
+  updateTopicsApi,
+  deleteTopic,
+  addContent,
+  fetchMaterialTypeApi,
+  fetchContentApi,
+  deleteContentApi,
+  fetchIndividualContentApi,
+  updateContentApi,
+  fetchContentUrlApi,
+  addCourse,
+  fetchcategoryApi,
+  fetchlevelApi,
+  addCategory,
+  fetchcourseApi,
+  addTopic,
+} from '../features/course/api';
+import {
+  deleteCourseFeedbackReducer as DeleteCourseFeedbackReducer,
+  updateCourseFeedbackReducer as UpdateCourseFeedbackReducer,
+  fetchTopicsReducer,
+  fetchEditTopicsReducer,
+  updateTopicReducer,
+  deleteTopicReducer,
+  AddMaterialReducer,
+  fetchMaterialTypeReducer,
+  fetchContentReducer,
+  deleteContentReducer,
+  fetchIndividualContentReducer,
+  updateContentReducer,
+  fetchContentUrlReducer,
+  fetchCategoryReducer,
+  fetchLevelReducer,
+  categoryReducer,
+  fetchCourseReducer,
+  addTopicReducer,
+  AddCourseReducer,
+} from '../features/course/state';
 // import UnenrollCourseApi from '../middleware/LearnerMiddleware/UnenrollApi';
 // import UnEnrollReducer from '../reducers/LearnerReducer/UnEnrollReducer';
 import LearnerScoreProgressBarGraphReducer from '../reducers/LearnerReducer/LearnerScoreProgressBarGraphReducer';
