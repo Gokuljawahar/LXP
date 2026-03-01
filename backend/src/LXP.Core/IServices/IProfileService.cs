@@ -9,14 +9,9 @@
 namespace LXP.Core.IServices;
 
 //namespace LXP.Core.IServices
-//{
-//    public interface IProfileService
-//    {
 
 //        Task<List<GetProfileViewModel>> GetAllLearnerProfile();
 //        LearnerProfile GetLearnerProfileById(string id);
-//    }
-//}
 
 
 using LXP.Common.Entities;

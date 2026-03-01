@@ -236,10 +236,6 @@ public class CourseServices : ICourseServices
     public IEnumerable<CourseListViewModel> GetAllCourseDetails() =>
         this._courseRepository.GetAllCourseDetails();
 
-    //    public IEnumerable<CourseRatingViewModel>GetCourseRating()
-    //    {
-    //           return _courseRepository.GetCourseRating();
-    //    }
 
     public IEnumerable<TopicRatingViewModel> GetTopicRating() =>
         this._courseRepository.GetTopicRating();

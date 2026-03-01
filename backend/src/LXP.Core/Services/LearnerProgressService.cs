@@ -155,25 +155,8 @@ public class LearnerProgressService(
         var topic = await this._courseTopicRepository.GetTopicsbyLearnerId(courseId, learnerId);
         double courseWatchDuration = 0;
         courseWatchDuration = topic.Sum(x => x.WatchTime.ToTimeSpan().TotalHours);
-        //Console.WriteLine(courseWatchDuration);
         return courseWatchDuration;
     }
-
-    //public async Task<double> materialCompletionPercentage(Guid learnerId, Guid courseId)
-    //{
-    //    var learnerProgress = await _learnerProgressRepository.GetLearnerProgressById(learnerId, courseId);
-    //    TimeSpan timeSpan_total = learnerProgress.TotalTime.ToTimeSpan();
-    //    double totaltime = timeSpan_total.TotalHours;
-
-    //    TimeSpan timeSpan_watch = learnerProgress.CourseWatchtime.ToTimeSpan();
-    //    double watchtime = timeSpan_watch.TotalHours;
-
-    //    double percentage = (watchtime / totaltime) * 100;
-    //    return percentage;
-
-
-    //}
-
 
     public async Task<double> TopicWatchTime(Guid topicId, Guid learnerId)
     {
@@ -181,7 +164,6 @@ public class LearnerProgressService(
             topicId,
             learnerId
         );
-        Console.WriteLine(materials);
         double watchDuration = 0;
         foreach (var material in materials)
         {
@@ -194,33 +176,8 @@ public class LearnerProgressService(
             var duration = materialdetail.WatchTime.ToTimeSpan().TotalHours;
             watchDuration += duration;
         }
-        Console.WriteLine(watchDuration);
         return watchDuration;
     }
-
-    //public async  Task<LearnerProgressViewModel> GetProgressById(Guid learnerProgressId)
-    // {
-    //    LearnerProgressViewModel  progress = await _learnerProgressRepository.GetLearnerProgressById(learnerProgressId);
-    //     return progress;
-    // }
-
-    //public async Task CalculateAndUpdateCourseCompletionAsync(Guid learnerId)
-    //{
-    //    await _learnerProgressRepository.CalculateAndUpdateCourseCompletionAsync(learnerId);
-    //}
-
-    //public async Task<decimal?> GetCourseCompletionPercentageAsync(
-    //    Guid learnerId,
-    //    Guid enrollmentId
-    //)
-    //{
-    //    await _learnerProgressRepository.CalculateAndUpdateCourseCompletionAsync(learnerId);
-    //    var enrollment = await _learnerProgressRepository.GetEnrollmentByIdAsync(
-    //        learnerId,
-    //        enrollmentId
-    //    );
-    //    return enrollment?.CourseCompletionPercentage;
-    //}
 
     public async Task<(
         decimal? CourseCompletionPercentage,
@@ -243,18 +200,10 @@ public class LearnerProgressService(
             learnerId
         );
 
-        //if (material == null || learnerProgress == null)
-        //{
-        //    return 0.0;
-        //}
 
         var materialDuration = material1.Duration.ToTimeSpan();
         var watchTime = learnerProgress.WatchTime.ToTimeSpan();
 
-        //if (materialDuration.TotalSeconds == 0)
-        //{
-        //    return 0.0;
-        //}
 
         if (material1.Duration == learnerProgress.WatchTime)
         {
@@ -265,46 +214,4 @@ public class LearnerProgressService(
         return watchTime.TotalSeconds / materialDuration.TotalSeconds * 100;
     }
 
-    //public async Task<(decimal CombinedProgress, Guid? CourseId)> CalculateCombinedProgressAsync(Guid learnerId, Guid enrollmentId, Guid materialId)
-    //{
-    //    // Calculate course completion percentage and get course ID
-    //    await _learnerProgressRepository.CalculateAndUpdateCourseCompletionAsync(learnerId);
-    //    var enrollment = await _learnerProgressRepository.GetEnrollmentByIdAsync(learnerId, enrollmentId);
-    //    var courseCompletionPercentage = enrollment?.CourseCompletionPercentage ?? 0m; // Default to 0 if null
-    //    var courseId = enrollment?.CourseId;
-
-    //    // Calculate material progress
-    //    var material = await _materialRepository.GetMaterialById(materialId);
-    //    var learnerProgress = await _learnerProgressRepository.GetLearnerMaterialProgressAsync(materialId, learnerId);
-    //    var materialDuration = material.Duration.ToTimeSpan();
-    //    var watchTime = learnerProgress.WatchTime.ToTimeSpan();
-
-
-
-    //    // Calculate combined progress (adjust the weighting as needed)
-    //    decimal materialProgress = materialDuration.TotalSeconds > 0
-    //        ? (decimal)watchTime.TotalSeconds / (decimal)materialDuration.TotalSeconds * 100m
-    //        : 0m;
-
-
-    //    decimal combinedProgress = (70m * courseCompletionPercentage + 30m * materialProgress) / 100m;
-
-    //    // Round to 2 decimal places
-    //    combinedProgress = Math.Round(combinedProgress, 2);
-
-    //    if (material.Duration == learnerProgress.WatchTime)
-    //    {
-
-    //        learnerProgress.IsWatched = 1;
-    //        await _learnerProgressRepository.Changewatchtime(learnerProgress);
-
-
-
-
-    //    }
-
-    //    return (combinedProgress, courseId);
-
-
-    //}
 }

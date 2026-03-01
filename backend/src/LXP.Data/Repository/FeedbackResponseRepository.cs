@@ -48,9 +48,6 @@ public class FeedbackResponseRepository(LXPDbContext context) : IFeedbackRespons
         this._context.SaveChanges();
     }
 
-    // public Guid? GetOptionIdByText(Guid questionId, string optionText)
-    // {
-    //     var option =
     //         _context.FeedbackQuestionsOptions.FirstOrDefault(o =>
     //             o.QuizFeedbackQuestionId == questionId
     //             && o.OptionText.ToLower() == optionText.ToLower()
@@ -60,8 +57,6 @@ public class FeedbackResponseRepository(LXPDbContext context) : IFeedbackRespons
     //             && o.OptionText.ToLower() == optionText.ToLower()
     //         );
 
-    //     return option?.FeedbackQuestionOptionId;
-    // }
 
     public Guid? GetOptionIdByText(Guid questionId, string optionText)
     {

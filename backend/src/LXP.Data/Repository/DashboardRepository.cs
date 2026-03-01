@@ -49,8 +49,6 @@ public class DashboardRepository(
             .ToList();
 
     public IEnumerable<DashboardEnrollmentViewModel> GetMonthWiseEnrollments(string year) =>
-        //DateOnly StartDate = '20-01-2010';
-        //DateOnly EndDate = DateOnly.FromDateTime(DateTime.Now);
 
         this
             ._lXPDbContext.Enrollments.Select(x => new DashboardEnrollmentViewModel
@@ -240,11 +238,6 @@ public class DashboardRepository(
                 CourseName = g.First().Course.Title,
             })
             .ToList();
-        foreach (var learner in topLearners)
-        {
-            Console.WriteLine("hi" + learner.CourseId);
-        }
-        ;
         return topLearners;
     }
 }

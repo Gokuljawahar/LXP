@@ -102,67 +102,24 @@ public class LoginService : ILoginService
         }
     }
 
-    //public async Task<Guid> GetLearnerId(EmailViewModel emailViewModel)
-    //{
 
     //    Guid learner =  _repository.FindLearnerId(emailViewModel);
 
-    //    return learner;
-
-
-    //}
-
-
-
-
-    //public async Task<bool> ForgetPassword(string Email)
-
-    //{
-
-
-    //    var getleareremail = await _repository.AnyUserByEmail(Email);
-
-
-    //    if (getleareremail == true)
-    //    {
 
     //        string password = RandomPassword.Randompasswordgenerator();
     //        string encryptPassword = Encryption.ComputePasswordToSha256Hash(password);
     //        _repository.UpdateLearnerPassword(Email, encryptPassword);
     //        EmailGenerator.Sendpassword(password, Email);
-    //        return true;
-    //    }
 
 
     //    else
-    //    {
-    //        return false;
-    //    }
 
 
-    //}
-
-
-
-    //public async Task<ResultUpdatePassword> UpdatePassword(UpdatePassword updatePassword)
-    //{
-    //    var learner = await _repository.LearnerByEmailAndPassword(updatePassword.Email, Encryption.ComputePasswordToSha256Hash(updatePassword.OldPassword));
-    //    var result = new ResultUpdatePassword();
-
-    //    if (learner.Password== Encryption.ComputePasswordToSha256Hash(updatePassword.OldPassword))
-    //    {
     //        string encryptNewPassword = Encryption.ComputePasswordToSha256Hash(updatePassword.NewPassword);
     //        learner.Password = encryptNewPassword;
-    //        await _repository.UpdatePassword(learner);
     //        result.success= true;
-    //        return result;
-    //    }
 
     //    else
-    //    {
-    //        return result;
 
-    //    }
 
-    //}
 }

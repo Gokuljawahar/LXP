@@ -26,11 +26,5 @@ public class LoginController(ILoginService services) : ControllerBase
 }
 
 
-//[HttpPost]
-//public async Task<ActionResult> GetLearnerId([FromBody] EmailViewModel emailViewModel)
-//{
-
 //    Guid Learnerid = await _services.GetLearnerId(emailViewModel);
-//    return Ok(new { userId = Learnerid });
 
-//}

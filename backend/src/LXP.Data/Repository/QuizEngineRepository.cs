@@ -180,14 +180,10 @@ public class QuizEngineRepository(LXPDbContext dbContext) : IQuizEngineRepositor
             })
             .ToListAsync();
 
-    //     public async Task<IEnumerable<QuizEngineQuestionViewModel>> GetQuestionsForQuizAsync(
     //         Guid quizId
     //     )
-    //     {
-    //         var questions = await this._dbContext
     //             .QuizQuestions.Where(q => q.QuizId == quizId)
     //             .Select(q => new QuizEngineQuestionViewModel
-    //             {
     //                 QuizQuestionId = q.QuizQuestionId,
     //                 Question = q.Question,
     //                 QuestionType = q.QuestionType,
@@ -199,27 +195,21 @@ public class QuizEngineRepository(LXPDbContext dbContext) : IQuizEngineRepositor
     //                                         .Select(o => new QuizEngineOptionViewModel { Option = o.Option })
     // ,
     //                 ]
-    //             })
     //             .ToListAsync();
 
     //         // Shuffle the questions and assign new question numbers
-    //         var shuffledQuestions = questions
     //             .OrderBy(q => Guid.NewGuid())
     //             .Select(
     //                 (q, index) =>
     //                     new QuizEngineQuestionViewModel
-    //                     {
     //                         QuizQuestionId = q.QuizQuestionId,
     //                         Question = q.Question,
     //                         QuestionType = q.QuestionType,
     //                         QuestionNo = index + 1, // Assign new question number based on shuffled order
     //                         Options = [.. q.Options.OrderBy(o => Guid.NewGuid())]
-    //                     }
     //             )
     //             .ToList();
 
-    //         return shuffledQuestions;
-    //     }
     public async Task<IEnumerable<QuizEngineQuestionViewModel>> GetQuestionsForQuizAsync(
         Guid quizId
     )
@@ -486,10 +476,8 @@ public class QuizEngineRepository(LXPDbContext dbContext) : IQuizEngineRepositor
         await this._dbContext.SaveChangesAsync();
     }
 
-    //     public async Task<QuizEngineQuestionViewModel> GetQuizQuestionByIdAsync(Guid quizQuestionId) => await this._dbContext
     //             .QuizQuestions.Where(q => q.QuizQuestionId == quizQuestionId)
     //             .Select(q => new QuizEngineQuestionViewModel
-    //             {
     //                 QuizQuestionId = q.QuizQuestionId,
     //                 Question = q.Question,
     //                 QuestionType = q.QuestionType,
@@ -502,7 +490,6 @@ public class QuizEngineRepository(LXPDbContext dbContext) : IQuizEngineRepositor
     //                                         .Select(o => new QuizEngineOptionViewModel { Option = o.Option })
     // ,
     //                 ]
-    //             })
     //             .FirstOrDefaultAsync();
     public async Task<QuizEngineQuestionViewModel> GetQuizQuestionByIdAsync(Guid quizQuestionId)
     {

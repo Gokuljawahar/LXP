@@ -23,9 +23,6 @@ public interface IQuizQuestionRepository
 //using LXP.Common.ViewModels.QuizQuestionViewModel;
 
 //namespace LXP.Data.IRepository
-//{
-//    public interface IQuizQuestionRepository
-//    {
 //        void DecrementQuestionNos(Guid deletedQuestionId);
 //        int GetNextQuestionNo(Guid quizId);
 //        Guid AddQuestionOption(QuestionOptionViewModel questionOption, Guid quizQuestionId);
@@ -50,5 +47,3 @@ public interface IQuizQuestionRepository
 //        Task<List<QuizQuestionNoViewModel>> GetAllQuestionsAsync();
 //        Task<List<QuizQuestionNoViewModel>> GetAllQuestionsByQuizIdAsync(Guid quizId);
 //        Task<QuizQuestionNoViewModel> GetQuestionByIdAsync(Guid quizQuestionId);
-//    }
-//}

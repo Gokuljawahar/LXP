@@ -152,7 +152,6 @@ public class LearnerProgressRepository(LXPDbContext context) : ILearnerProgressR
             if (quizScore > maxQuizScore)
             {
                 var materialCompletionPercentage = watchedDuration / totalCourseDuration * 70;
-                //var quizCompletionPercentage = (quizScore / (double)maxQuizScore) * 30;
                 var quizCompletionPercentage = 30;
                 var courseCompletionPercentage =
                     materialCompletionPercentage + quizCompletionPercentage;
@@ -182,13 +181,9 @@ public class LearnerProgressRepository(LXPDbContext context) : ILearnerProgressR
         await this._context.SaveChangesAsync();
     }
 
-    //public async Task CalculateAndUpdateCourseCompletionAsync(Guid learnerId)
-    //{
     //    // Fetch the learner's enrolled courses and map to ViewModel
-    //    var enrollments = await _context.Enrollments
     //        .Where(e => e.LearnerId == learnerId)
     //        .Select(e => new LearnerProgressEnrollmentViewModel
-    //        {
     //            EnrollmentId = e.EnrollmentId,
     //            LearnerId = e.LearnerId,
     //            CourseId = e.CourseId,
@@ -196,7 +191,6 @@ public class LearnerProgressRepository(LXPDbContext context) : ILearnerProgressR
     //            EnrollStatus = e.EnrollStatus,
 
     //            Course = new LearnerProgressCourseViewModel
-    //            {
     //                CourseId = e.Course.CourseId,
     //                LevelId = e.Course.LevelId,
     //                CategoryId = e.Course.CategoryId,
@@ -211,61 +205,38 @@ public class LearnerProgressRepository(LXPDbContext context) : ILearnerProgressR
     //                ModifiedBy = e.Course.ModifiedBy,
     //                ModifiedAt = e.Course.ModifiedAt,
     //                Topics = e.Course.Topics.Select(t => new LearnerProgressTopicViewModel
-    //                {
     //                    TopicId = t.TopicId,
     //                    Name = t.Name,
     //                    Materials = t.Materials.Select(m => new LearnerProgressMaterialViewModel
-    //                    {
     //                        MaterialId = m.MaterialId,
     //                        Name = m.Name,
     //                        FilePath = m.FilePath,
     //                        Duration = m.Duration,
     //                        IsActive = m.IsActive,
     //                        IsAvailable = m.IsAvailable
-    //                    }).ToList()
-    //                }).ToList()
-    //            }
-    //        }).ToListAsync();
 
     //    foreach (var enrollment in enrollments)
-    //    {
-    //        var course = enrollment.Course;
 
     //        // Get the total number of materials for the course
-    //        var totalMaterials = course.Topics.SelectMany(t => t.Materials).Count();
 
     //        // Check material completion status from the learner progress table
-    //        var completedMaterials = await _context.LearnerProgresses
     //            .Where(lp => lp.LearnerId == learnerId && lp.CourseId == course.CourseId && lp.IsWatched)
     //            .CountAsync();
 
     //        // Get the learner's last attempt score from the learner attempt table
-    //        var lastAttempt = await _context.LearnerAttempts
     //            .Where(la => la.LearnerId == learnerId && la.Quiz.CourseId == course.CourseId)
     //            .OrderByDescending(la => la.EndTime)
     //            .FirstOrDefaultAsync();
 
-    //        var quizScore = lastAttempt != null ? lastAttempt.Score : 0;
 
     //        // Calculate the course completion percentage
-    //        var materialCompletionPercentage = (completedMaterials / (double)totalMaterials) * 70;
-    //        var quizCompletionPercentage = quizScore * 0.3;
-    //        var courseCompletionPercentage = materialCompletionPercentage + quizCompletionPercentage;
     //        //var materialCompletionPercentage = (double)completedMaterials / totalMaterials * 70;
     //        //var quizCompletionPercentage = quizScore * 0.3;
     //        //var courseCompletionPercentage = materialCompletionPercentage + quizCompletionPercentage;
 
     //        // Update the enrollment table with the calculated percentage
-    //        var enrollmentToUpdate = await _context.Enrollments.FindAsync(enrollment.EnrollmentId);
-    //        if (enrollmentToUpdate != null)
-    //        {
     //            enrollmentToUpdate.CourseCompletionPercentage = (decimal)courseCompletionPercentage;
     //            _context.Enrollments.Update(enrollmentToUpdate);
-    //        }
-    //    }
-
-    //    await _context.SaveChangesAsync();
-    //}
 
 
     public async Task<Enrollment> GetEnrollmentByIdAsync(Guid learnerId, Guid enrollmentId) =>

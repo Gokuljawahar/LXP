@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]
 public class LearnerProgressController(ILearnerProgressService Progress) : BaseController
 {
-    //private readonly ILearnerProgressService _learnerProgressService;
     private readonly ILearnerProgressService _Progress = Progress;
 
     [HttpPost("/lxp/course/learner/learnerprogress")]
@@ -34,8 +33,6 @@ public class LearnerProgressController(ILearnerProgressService Progress) : BaseC
                 )
             )
         );
-
-
 
 
     [HttpGet("course-completion-percentage/{learnerId}/{enrollmentId}")]
@@ -85,62 +82,22 @@ public class LearnerProgressController(ILearnerProgressService Progress) : BaseC
 }
 
 
-//[HttpPost("/lxp/learner/learnerprogressStatus")]
-//public async Task MaterialCompleted(Guid learnerId, Guid courseId)
-//{
-//    await _Progress.CalculateMaterialCompletionPercentageAsync(learnerId, courseId);
-//}
-//[HttpPost("/lxp/learner/learnerprogressWatchTime")]
-//public async Task<IActionResult> MaterialWatchTime(Guid learnerId, Guid materialId, TimeOnly watchtime)
-//{
-//    var percentage = await _Progress.materialWatchTime(learnerId, materialId, watchtime);
-//    return Ok(percentage);
-//}
-
-//[HttpPost("calculate-course-completion/{learnerId}")]
-//public async Task<IActionResult> CalculateCourseCompletion(Guid learnerId)
-//{
 //    try
-//    {
-//        await _Progress.CalculateAndUpdateCourseCompletionAsync(learnerId);
-//        return Ok(
 //            new
-//            {
 //                Message = "Course completion percentage calculated and updated successfully."
-//            }
 //        );
-//    }
 //    catch (Exception ex)
-//    {
-//        return StatusCode(
 //            500,
 //            new
-//            {
 //                Message = "An error occurred while calculating the course completion.",
 //                Details = ex.Message
-//            }
 //        );
-//    }
-//}
 
 
-//[HttpGet("combined-progress")]
-//public async Task<IActionResult> GetCombinedProgress(Guid learnerId, Guid enrollmentId, Guid materialId)
-//{
 //    try
-//    {
 //        // Call your learner progress service to calculate combined progress
-//        var (combinedProgress, courseId) = await _Progress.CalculateCombinedProgressAsync(learnerId, enrollmentId, materialId);
 
-//        return Ok(new
-//        {
 //            CombinedProgress = combinedProgress,
 //            CourseId = courseId
-//        });
-//    }
 //    catch (Exception ex)
-//    {
 //        // Handle exceptions (e.g., invalid input, database errors)
-//        return BadRequest(ex.Message);
-//    }
-//}

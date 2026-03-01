@@ -15,8 +15,5 @@ public interface ILoginRepository
     public Task UpdateLearnerPassword(string Email, string Password);
     public Task UpdateLearnerLastLogin(string Email);
 
-    //public  Task UpdatePassword(Learner learner);
 
-
-    //public Task<Learner> LearnerByEmailAndPassword(string Email, string Password);
 }

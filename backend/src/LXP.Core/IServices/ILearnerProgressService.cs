@@ -38,8 +38,6 @@ public interface ILearnerProgressService
 
     // Task<(decimal CombinedProgress, Guid? CourseId)> CalculateCombinedProgressAsync(Guid learnerId, Guid enrollmentId, Guid materialId);
 }
-//public interface ILearnerProgressService
-//{
 //    Task Progress(LearnerProgressViewModel learnerProgress);
 //    Task<double> materialCompletion(Guid learnerId, Guid materialId);
 //    Task<double> materialWatchTime(Guid learnerId, Guid materialId, TimeOnly watchTime);
@@ -51,4 +49,3 @@ public interface ILearnerProgressService
 
 //    Task<double> TopicWatchTime(Guid topicId, Guid learnerId);
 //    Task<double> CourseWatchTime(Guid courseId, Guid learnerId);
-//}

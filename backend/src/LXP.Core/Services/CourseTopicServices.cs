@@ -108,8 +108,6 @@ public class CourseTopicServices : ICourseTopicServices
         }
     }
 
-    //public async Task<bool> UpdateCourseTopic(CourseTopicUpdateModel courseTopic)
-    //{
     //    Topic topic = await _courseTopicRepository.GetTopicByTopicId(
     //        Guid.Parse(courseTopic.TopicId)
     //    );
@@ -126,14 +124,11 @@ public class CourseTopicServices : ICourseTopicServices
     //    topic.Description = courseTopic.Description;
     //    topic.ModifiedBy = courseTopic.ModifiedBy;
     //    topic.ModifiedAt = DateTime.Now;
-    //    await _courseTopicRepository.UpdateCourseTopic(topic);
-    //    return true;
     //    //}
     //    //else
     //    //{
     //    //    return false;
     //    //}
-    //}
     public bool UpdateCourseTopic(CourseTopicUpdateModel courseTopic)
     {
         //Topic topic = await _courseTopicRepository.GetTopicByTopicId(

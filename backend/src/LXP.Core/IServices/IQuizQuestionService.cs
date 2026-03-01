@@ -24,9 +24,6 @@ public interface IQuizQuestionService
 //using LXP.Common.ViewModels.QuizQuestionViewModel;
 
 //namespace LXP.Core.IServices
-//{
-//    public interface IQuizQuestionService
-//    {
 //        Task<Guid> AddQuestionAsync(
 //            QuizQuestionViewModel quizQuestion,
 //            List<QuestionOptionViewModel> options
@@ -40,5 +37,3 @@ public interface IQuizQuestionService
 //        Task<List<QuizQuestionNoViewModel>> GetAllQuestionsByQuizIdAsync(Guid quizId);
 //        Task<List<QuizQuestionNoViewModel>> GetAllQuestionsAsync();
 //        Task<QuizQuestionNoViewModel> GetQuestionByIdAsync(Guid quizQuestionId);
-//    }
-//}

@@ -81,11 +81,9 @@ public class EnrollmentRepository(
                             }
                         ).ToList(),
                         //MaterialType =(from materialType in _lXPDbContext.MaterialTypes select new
-                        //{
                         //    MaterialType=materialType.Type,
                         //    MaterialTypeId=materialType.MaterialTypeId,
 
-                        //}).ToList(),
                     }
                 ).ToList()
             };
@@ -334,14 +332,9 @@ public class EnrollmentRepository(
 }
 
 
-
-//public object GetCourseandTopicsByCourseIdAndLearnerId(Guid courseId, Guid learnerId) // 27062024
-//{
-//    var result =
 //        from enrollment in _lXPDbContext.Enrollments
 //        where enrollment.LearnerId == learnerId && enrollment.CourseId == courseId
 //        select new
-//        {
 //            enrollmentid = enrollment.EnrollmentId,
 //            enrolledCourseId = enrollment.CourseId,
 //            enrolledCoursename = enrollment.Course.Title,
@@ -361,7 +354,6 @@ public class EnrollmentRepository(
 //                where topic.CourseId == enrollment.CourseId && topic.IsActive == true
 //                orderby topic.CreatedAt ascending
 //                select new
-//                {
 //                    TopicName = topic.Name,
 //                    TopicDescription = topic.Description,
 //                    TopicId = topic.TopicId,
@@ -408,7 +400,6 @@ public class EnrollmentRepository(
 
 //                        where material.TopicId == topic.TopicId && material.IsActive == true
 //                        select new
-//                        {
 //                            MaterialId = material.MaterialId,
 //                            MaterialName = material.Name,
 //                            MaterialType = materialType.Type,
@@ -420,22 +411,13 @@ public class EnrollmentRepository(
 //                                material.FilePath
 //                            ),
 //                            MaterialDuration = material.Duration
-//                        }
 //                    ).ToList(),
-//                }
 //            ).ToList()
-//        };
-//    return result;
-//}
 
 
-//public object GetCourseandTopicsByCourseIdAndLearnerId(Guid courseId, Guid learnerId)
-//{
-//    var result =
 //        from enrollment in _lXPDbContext.Enrollments
 //        where enrollment.LearnerId == learnerId && enrollment.CourseId == courseId
 //        select new
-//        {
 //            enrollmentid = enrollment.EnrollmentId,
 //            enrolledCourseId = enrollment.CourseId,
 //            enrolledCoursename = enrollment.Course.Title,
@@ -454,7 +436,6 @@ public class EnrollmentRepository(
 //                from topic in _lXPDbContext.Topics
 //                where topic.CourseId == enrollment.CourseId && topic.IsActive == true
 //                select new
-//                {
 //                    TopicName = topic.Name,
 //                    TopicDescription = topic.Description,
 //                    TopicId = topic.TopicId,
@@ -466,7 +447,6 @@ public class EnrollmentRepository(
 
 //                        where material.TopicId == topic.TopicId && material.IsActive == true
 //                        select new
-//                        {
 //                            MaterialId = material.MaterialId,
 //                            MaterialName = material.Name,
 //                            MaterialType = materialType.Type,
@@ -478,7 +458,6 @@ public class EnrollmentRepository(
 //                                material.FilePath
 //                            ),
 //                            MaterialDuration = material.Duration
-//                        }
 //                    ).ToList(),
 //                    //MaterialType =(from materialType in _lXPDbContext.MaterialTypes select new
 //                    //{
@@ -486,18 +465,10 @@ public class EnrollmentRepository(
 //                    //    MaterialTypeId=materialType.MaterialTypeId,
 
 //                    //}).ToList(),
-//                }
 //            ).ToList()
-//        };
-//    return result;
-//}
-// public object GetCourseandTopicsByCourseIdAndLearnerId(Guid courseId, Guid learnerId)
-// {
-//     var result =
 //         from enrollment in _lXPDbContext.Enrollments
 //         where enrollment.LearnerId == learnerId && enrollment.CourseId == courseId
 //         select new
-//         {
 //             enrollmentid = enrollment.EnrollmentId,
 //             enrolledCourseId = enrollment.CourseId,
 //             enrolledCoursename = enrollment.Course.Title,
@@ -516,7 +487,6 @@ public class EnrollmentRepository(
 //                 from topic in _lXPDbContext.Topics
 //                 where topic.CourseId == enrollment.CourseId && topic.IsActive == true
 //                 select new
-//                 {
 //                     TopicName = topic.Name,
 //                     TopicDescription = topic.Description,
 //                     TopicId = topic.TopicId,
@@ -553,7 +523,6 @@ public class EnrollmentRepository(
 
 //                         where material.TopicId == topic.TopicId && material.IsActive == true
 //                         select new
-//                         {
 //                             MaterialId = material.MaterialId,
 //                             MaterialName = material.Name,
 //                             MaterialType = materialType.Type,
@@ -565,7 +534,6 @@ public class EnrollmentRepository(
 //                                 material.FilePath
 //                             ),
 //                             MaterialDuration = material.Duration
-//                         }
 //                     ).ToList(),
 //                     //MaterialType =(from materialType in _lXPDbContext.MaterialTypes select new
 //                     //{
@@ -573,8 +541,4 @@ public class EnrollmentRepository(
 //                     //    MaterialTypeId=materialType.MaterialTypeId,
 
 //                     //}).ToList(),
-//                 }
 //             ).ToList()
-//         };
-//     return result;
-// }

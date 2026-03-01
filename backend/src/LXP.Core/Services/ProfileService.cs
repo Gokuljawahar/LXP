@@ -13,43 +13,13 @@
 namespace LXP.Core.Services;
 
 //namespace LXP.Core.Services
-//{
-//    public  class ProfileService:IProfileService
-//    {
-//        private readonly IProfileRepository _profileRepository;
-//        private Mapper _learnerProfileMapper;
 
-//        public ProfileService( IProfileRepository profileRepository)
-//        {
 
 //            this._profileRepository = profileRepository;
-//            var _configCategory = new MapperConfiguration(cfg => cfg.CreateMap<LearnerProfile, GetProfileViewModel>().ReverseMap());
 //            _learnerProfileMapper = new Mapper(_configCategory);
 
-//        }
 
-//        public async Task<List<GetProfileViewModel>> GetAllLearnerProfile()
-//        {
 //            List<GetProfileViewModel> learnerProfile = _learnerProfileMapper.Map<List<LearnerProfile>, List<GetProfileViewModel>>(await _profileRepository.GetAllLearnerProfile());
-//            return learnerProfile;
-//        }
-
-//        public LearnerProfile GetLearnerProfileById(string id) {
-
-//            return _profileRepository.GetLearnerprofileDetailsByLearnerprofileId(Guid.Parse(id));
-
-//        }
-
-//    }
-//}
-
-
-
-
-
-
-
-
 
 
 using AutoMapper;
@@ -93,7 +63,6 @@ public class ProfileService : IProfileService
 
     public LearnerProfile GetLearnerProfileById(string id)
     {
-        //return _profileRepository.GetLearnerprofileDetailsByLearnerprofileId(Guid.Parse(id));
 
         var profile = this._profileRepository.GetLearnerprofileDetailsByLearnerprofileId(
             Guid.Parse(id)

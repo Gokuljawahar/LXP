@@ -8,7 +8,6 @@ public class RegisterUserViewModel
 
     public string role { get; set; } = null!;
 
-    //public string CreatedBy { get; set; } = null!;
 
     public string firstName { get; set; } = null!;
 
@@ -24,5 +23,4 @@ public class RegisterUserViewModel
 
     public string? Newpassword { get; set; }
 
-    //public string? ProfilePhoto { get; set; }
 }

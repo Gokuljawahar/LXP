@@ -12,5 +12,4 @@ public class LearnerProgressViewModel
 
     public TimeOnly WatchTime { get; set; }
 
-    //public TimeOnly TotalTime { get; set; }
 }

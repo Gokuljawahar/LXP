@@ -20,9 +20,7 @@ public class QuizFeedbackRepository(LXPDbContext dbContext) : IQuizFeedbackRepos
         this._dbContext.SaveChanges();
     }
 
-    //     public List<QuizfeedbackquestionNoViewModel> GetAllFeedbackQuestions() => this._dbContext
     //             .QuizFeedbackQuestions.Select(q => new QuizfeedbackquestionNoViewModel
-    //             {
     //                 QuizFeedbackQuestionId = q.QuizFeedbackQuestionId,
     //                 QuizId = q.QuizId,
     //                 QuestionNo = q.QuestionNo,
@@ -36,12 +34,9 @@ public class QuizFeedbackRepository(LXPDbContext dbContext) : IQuizFeedbackRepos
     //                                             o.QuizFeedbackQuestionId == q.QuizFeedbackQuestionId
     //                                         )
     //                                         .Select(o => new QuizFeedbackQuestionsOptionViewModel
-    //                                         {
     //                                             OptionText = o.OptionText,
-    //                                         })
     // ,
     //                 ]
-    //             })
     //             .ToList();
     public List<QuizfeedbackquestionNoViewModel> GetAllFeedbackQuestions()
     {
@@ -80,10 +75,8 @@ public class QuizFeedbackRepository(LXPDbContext dbContext) : IQuizFeedbackRepos
         return result;
     }
 
-    //     public List<QuizfeedbackquestionNoViewModel> GetFeedbackQuestionsByQuizId(Guid quizId) => this._dbContext
     //             .QuizFeedbackQuestions.Where(q => q.QuizId == quizId)
     //             .Select(q => new QuizfeedbackquestionNoViewModel
-    //             {
     //                 QuizFeedbackQuestionId = q.QuizFeedbackQuestionId,
     //                 QuizId = q.QuizId,
     //                 QuestionNo = q.QuestionNo,
@@ -97,12 +90,9 @@ public class QuizFeedbackRepository(LXPDbContext dbContext) : IQuizFeedbackRepos
     //                                             o.QuizFeedbackQuestionId == q.QuizFeedbackQuestionId
     //                                         )
     //                                         .Select(o => new QuizFeedbackQuestionsOptionViewModel
-    //                                         {
     //                                             OptionText = o.OptionText
-    //                                         })
     // ,
     //                 ]
-    //             })
     //             .ToList();
     public List<QuizfeedbackquestionNoViewModel> GetFeedbackQuestionsByQuizId(Guid quizId)
     {
