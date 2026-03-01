@@ -20,6 +20,7 @@ import PauseIcon from "@mui/icons-material/Pause";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { watchTimeRequest } from "../../actions/LearnerAction/WatchTimeAction";
+import { getLearnerMaterialWatchTime } from "../../features/learner/api/progressApi";
 //import { useDispatch, useSelector } from "react-redux";
  
 const Audio = styled.video`
@@ -201,20 +202,11 @@ const LearnerAudioViewer = ({ material, materialId ,materialName }) => {
   const fetchWatchTime = async () => {
     try {
       const learnerId = sessionStorage.getItem("UserSessionID");
-    
-     
-      const response = await fetch(`http://localhost:5199/lxp/course/learner/learnerprogress/watchtime?LearnerId=${learnerId}&MaterialId=${materialId}`);
-      const data = await response.json();
-    
-      if (data.data.watchTime) {
-        const parts = data.data.watchTime.split(':').map(Number);
-        const watchTimeInSeconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
-        return watchTimeInSeconds;
-      }
+      return await getLearnerMaterialWatchTime({ learnerId, materialId });
     } catch (error) {
       console.error("Failed to fetch watch time:", error);
+      return 0;
     }
-     return 0;
   };
  
   useEffect(() => {
