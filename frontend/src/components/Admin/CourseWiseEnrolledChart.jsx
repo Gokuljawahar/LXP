@@ -17,8 +17,10 @@ import {
   Legend,
 } from "chart.js";
 import { Pie, Doughnut, Line } from "react-chartjs-2";
-import axios from "axios";
 import { Paper, Button, Typography } from "@mui/material";
+import { getCourseWiseEnrollmentCount } from "../../features/admin/api/dashboardApi";
+import { mapCourseEnrollmentsToChartData } from "../../features/admin/selectors/dashboardSelectors";
+import useAsyncRequest from "../../hooks/useAsyncRequest";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -46,60 +48,39 @@ ChartJS.register(
 );
 
 const CourseWiseEnrolledChart = () => {
-  const [chartData, setChartData] = useState(null);
   const [chartType, setChartType] = useState("pie");
+  const {
+    data: chartData,
+    error,
+    isLoading,
+    run: loadCourseEnrollmentData,
+  } = useAsyncRequest(getCourseWiseEnrollmentCount, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5199/lxp/admin/GetCourseWiseEnrollmentsCount"
-        );
-        const data = response.data.data;
-        setChartData({
-          labels: data.map((row) => row.courseName),
-          datasets: [
-            {
-              label: "Enrollments",
-              data: data.map((row) => row.count),
-              backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#4BC0C0",
-                "#9966FF",
-                "#FF9F40",
-                "#003f5c",
-                "#2f4b7c",
-                "#665191",
-                "#a05195",
-                "#d45087",
-                "#f95d6a",
-                "#ff7c43",
-                "#ffa600",
-              ],
-              borderColor:
-                chartType === "line" ? "rgba(75,192,192,1)" : undefined,
-              borderWidth: chartType === "line" ? 2 : undefined,
-            },
-          ],
-        });
+        await loadCourseEnrollmentData();
       } catch (error) {
         console.error("Error fetching course enrollments", error);
       }
     };
 
     fetchData();
-  }, [chartType]);
+  }, [loadCourseEnrollmentData]);
+
+  const normalizedChartData =
+    chartData.length > 0
+      ? mapCourseEnrollmentsToChartData(chartData, chartType)
+      : null;
 
   const renderChart = () => {
     switch (chartType) {
       case "doughnut":
-        return <Doughnut data={chartData} />;
+        return <Doughnut data={normalizedChartData} />;
       case "line":
-        return <Line data={chartData} />;
+        return <Line data={normalizedChartData} />;
       default:
-        return <Pie data={chartData} />;
+        return <Pie data={normalizedChartData} />;
     }
   };
 
@@ -160,7 +141,9 @@ const CourseWiseEnrolledChart = () => {
                   </Button>
                 </div>
                 <div style={{ width: "100%", maxWidth: "400px" }}>
-                  {chartData ? renderChart() : <p>Loading...</p>}
+                  {isLoading && <p>Loading...</p>}
+                  {!isLoading && error && <p>Unable to load chart data.</p>}
+                  {!isLoading && !error && normalizedChartData && renderChart()}
                 </div>
               </div>
             </CardContent>

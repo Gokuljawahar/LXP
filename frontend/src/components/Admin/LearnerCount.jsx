@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useEffect } from 'react'
 import { FaUserGraduate } from 'react-icons/fa';
+import { getTotalLearners } from '../../features/admin/api/dashboardApi';
+import useAsyncRequest from '../../hooks/useAsyncRequest';
 
 function LearnersCount() {
-    const [count, setCount] = useState(0);
-    const fetchData = async () => {
-        try {
-            const response = await axios.get(' http://localhost:5199/api/Dashboard/GetTotalLearners');
-            // console.log(response.data.data);
-            setCount(response.data.data);
-        } catch (error) {
-            console.error('Error fetching new learner count:', error);
-        }
-    };
+    const { data: count, error, isLoading, run: fetchData } = useAsyncRequest(getTotalLearners, 0);
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        fetchData().catch((requestError) => {
+            console.error('Error fetching new learner count:', requestError);
+        });
+    }, [fetchData]);
+
     return (
         <div>
             <FaUserGraduate size={30} />
             <h5 className="card-title">Number of Learners</h5>
-            <p className="card-text">Count: <span id="learnerCount">{count}</span></p>
+            {isLoading && <p className="card-text">Loading...</p>}
+            {!isLoading && error && <p className="card-text">Unable to load learner count.</p>}
+            {!isLoading && !error && <p className="card-text">Count: <span id="learnerCount">{count}</span></p>}
         </div>
     )
 }
